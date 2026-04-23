@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Local dashboard</title>
+	<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link
@@ -13,6 +14,7 @@
 	<link rel="stylesheet" href="./css/clean.css">
 	<link rel="stylesheet" href="./css/full.css">
 	<link rel="stylesheet" href="./css/sidebar.css">
+	<link rel="stylesheet" href="./css/main-full.css">
 </head>
 
 <body class="body">
@@ -83,7 +85,37 @@
 				</div>
 			</footer>
 		</aside>
-		<main class="main"></main>
+		<main class="main">
+			<div class="main__header grey-block">
+				<div class="main__header__sidebar_arrow">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<rect width="18" height="18" x="3" y="3" rx="2"></rect>
+						<path d="M9 3v18"></path>
+						<path d="m16 15-3-3 3-3"></path>
+					</svg>
+				</div>
+				<div class="main__header__separator"></div>
+				<div class="main__header__date_chooser">
+					<select id="month" name="month" class="main__header__date_chooser__input main__header__date_chooser__month">
+						<option value="moscow">Москва</option>
+						<option value="spb">Санкт-Петербург</option>
+						<option value="kazan">Казань</option>
+					</select>
+					<select id="year" name="year" class="main__header__date_chooser__input main__header__date_chooser__year">
+						<option value="moscow">2025</option>
+						<option value="spb">2026</option>
+						<option value="kazan">2027</option>
+					</select>
+					<div class="main__header__date_chooser__btn" data-i18n="datechoose"></div>
+				</div>
+				<div class="main__header__date_info">
+					<span class="main__header__date_info__span" data-i18n="datetext"></span>
+					<span class="main__header__date_info__span">April</span>
+					<span class="main__header__date_info__span">2026</span>
+				</div>
+			</div>
+		</main>
 	</div>
 	<script type="module" src="./js/main.js"></script>
 </body>

@@ -5,6 +5,8 @@ const translations = {
 		assignments: "Назначения",
 		langtext: "Язык:",
 		lang: "РУС",
+		datetext: "Выбранный период:",
+		datechoose: "Обновить"
 	},
 	en: {
 		employees: "Employees",
@@ -12,6 +14,8 @@ const translations = {
 		assignments: "Assignments",
 		langtext: "Language:",
 		lang: "EN",
+		datetext: "Selected period:",
+		datechoose: "Update"
 	}
 }
 
@@ -22,13 +26,11 @@ export function translatePage(lang) {
 	})
 }
 
-export function changeLanguage() {
-	if (localStorage.getItem("lang") === 'en') {
-		localStorage.setItem("lang", 'ru')
-	} else {
-		localStorage.setItem("lang", 'en')
-	}
-	
+export function changeLanguage() {	
+	const langIndex = Object.keys(translations).indexOf(localStorage.getItem("lang") || 'en')
+	let nextLangIndex = langIndex === Object.keys(translations).length - 1 ? 0 : langIndex + 1
+
+	localStorage.setItem("lang", Object.keys(translations)[nextLangIndex])
 	initLanguage()
 }
 
