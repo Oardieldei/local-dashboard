@@ -35,6 +35,16 @@
 					<li class="nav__item active">
 						<div class="nav__item_icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								sstroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+								<rect width="20" height="14" x="2" y="6" rx="2"></rect>
+							</svg>
+						</div>
+						<div class="nav__item_text" data-i18n="projects"></div>
+					</li>
+					<li class="nav__item">
+						<div class="nav__item_icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
 								stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
 								<circle cx="9" cy="7" r="4"></circle>
@@ -43,16 +53,6 @@
 							</svg>
 						</div>
 						<div class="nav__item_text" data-i18n="employees"></div>
-					</li>
-					<li class="nav__item">
-						<div class="nav__item_icon">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-								sstroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-								<rect width="20" height="14" x="2" y="6" rx="2"></rect>
-							</svg>
-						</div>
-						<div class="nav__item_text" data-i18n="projects"></div>
 					</li>
 					<li class="nav__item">
 						<div class="nav__item_icon">
@@ -98,14 +98,23 @@
 				<div class="main__header__separator"></div>
 				<div class="main__header__date_chooser">
 					<select id="month" name="month" class="main__header__date_chooser__input main__header__date_chooser__month">
-						<option value="moscow">Москва</option>
-						<option value="spb">Санкт-Петербург</option>
-						<option value="kazan">Казань</option>
+						<option value="0" data-i18n="month0"></option>
+						<option value="1" data-i18n="month1"></option>
+						<option value="2" data-i18n="month2"></option>
+						<option value="3" data-i18n="month3"></option>
+						<option value="4" data-i18n="month4"></option>
+						<option value="5" data-i18n="month5"></option>
+						<option value="6" data-i18n="month6"></option>
+						<option value="7" data-i18n="month7"></option>
+						<option value="8" data-i18n="month8"></option>
+						<option value="9" data-i18n="month9"></option>
+						<option value="10" data-i18n="month10"></option>
+						<option value="11" data-i18n="month11"></option>
 					</select>
 					<select id="year" name="year" class="main__header__date_chooser__input main__header__date_chooser__year">
-						<option value="moscow">2025</option>
-						<option value="spb">2026</option>
-						<option value="kazan">2027</option>
+						<option value="2025">2025</option>
+						<option value="2026">2026</option>
+						<option value="2027">2027</option>
 					</select>
 					<div class="main__header__date_chooser__btn" data-i18n="datechoose"></div>
 				</div>
@@ -114,6 +123,9 @@
 					<span class="main__header__date_info__span">April</span>
 					<span class="main__header__date_info__span">2026</span>
 				</div>
+			</div>
+			<div class="pages__wrapper">
+
 			</div>
 		</main>
 	</div>

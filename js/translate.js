@@ -6,7 +6,19 @@ const translations = {
 		langtext: "Язык:",
 		lang: "РУС",
 		datetext: "Выбранный период:",
-		datechoose: "Обновить"
+		datechoose: "Обновить",
+		month0: "Январь",
+		month1: "Февраль",
+		month2: "Март",
+		month3: "Апрель",
+		month4: "Май",
+		month5: "Июнь",
+		month6: "Июль",
+		month7: "Август",
+		month8: "Сентябрь",
+		month9: "Октябрь",
+		month10: "Ноябрь",
+		month11: "Декабрь",
 	},
 	en: {
 		employees: "Employees",
@@ -15,7 +27,19 @@ const translations = {
 		langtext: "Language:",
 		lang: "EN",
 		datetext: "Selected period:",
-		datechoose: "Update"
+		datechoose: "Update",
+		month0: "January",
+		month1: "February",
+		month2: "March",
+		month3: "April",
+		month4: "May",
+		month5: "June",
+		month6: "July",
+		month7: "August",
+		month8: "September",
+		month9: "October",
+		month10: "November",
+		month11: "December",
 	}
 }
 
