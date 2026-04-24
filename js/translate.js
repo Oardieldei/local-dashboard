@@ -48,6 +48,9 @@ export function translatePage(lang) {
 		const key = el.dataset.i18n
 		el.textContent = translations[lang][key] || key
 	})
+
+	const select = document.querySelector('.main__header__date_chooser__month')
+	document.querySelector('.curr_date__month').textContent = select.options[select.selectedIndex].text
 }
 
 export function changeLanguage() {	
