@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="./css/full.css">
 	<link rel="stylesheet" href="./css/sidebar.css">
 	<link rel="stylesheet" href="./css/main-full.css">
+	<link rel="stylesheet" href="./css/add-form.css">
 </head>
 
 <body class="body">
@@ -128,8 +129,26 @@
 
 			</div>
 		</main>
-		<div class="add_project side_block">
-			
+		<div class="add_project side_block side_block-hide">
+			<p class="side_block__title" data-i18n="addProjectTitle"></p>
+			<ul class="add_project__list side_block__list">
+				<li class="add_project__item side_block__item">
+					<label for="addprojname" data-i18n="addProjNameLabel"></label><input type="text" name="addprojname" id="addprojname">
+				</li>
+				<li class="add_project__item side_block__item">
+					<label for="addprojcompany" data-i18n="addProjCompanyLabel"></label><input type="text" name="addprojcompany" id="addprojcompany">
+				</li>
+				<li class="add_project__item side_block__item">
+					<label for="addprojbudget" data-i18n="addProjBugetLabel"></label><input type="number" name="addprojbudget" id="addprojbudget">
+				</li>
+				<li class="add_project__item side_block__item">
+					<label for="addprojcapacity" data-i18n="addProjCapacityLabel"></label><input type="number" name="addprojcapacity" id="addprojcapacity">
+				</li>
+			</ul>
+			<div class="add_project__btns side_block__btns">
+				<div class="add_project__btn_submit side_block__btn_submit" data-i18n="addSubmitBtn"></div>
+				<div class="add_project__btn_cancel side_block__btn_cancel" data-i18n="addCancelBtn"></div>
+			</div>
 		</div>
 	</div>
 	<script type="module" src="./js/main.js"></script>

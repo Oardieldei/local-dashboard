@@ -1,5 +1,6 @@
 import { getProjectsByCurrentDate } from './data-projects.js'
 import { initLanguage } from "../translate.js"
+import { addProjSideblockSwitchStance } from "./actions-projects.js"
 
 export function renderProjects() {
 	const projects = getProjectsByCurrentDate()
@@ -8,6 +9,7 @@ export function renderProjects() {
 	container.innerHTML = ''
 
 	container.append(createProjectsHeader())
+	addProjSideblockSwitchStance()
 
 	/* Object.values(projects).forEach(proj => {
 		const div = document.createElement('div')
@@ -38,6 +40,7 @@ function createProjectsHeader() {
 
 	const addBtn = document.createElement('button')
 	addBtn.classList.add('main__topbox__btn')
+	addBtn.classList.add('add_project__open_btn')
 	addBtn.dataset.i18n = 'projectsBtn'
 	newElem.append(addBtn)
 

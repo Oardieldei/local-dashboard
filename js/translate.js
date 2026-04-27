@@ -25,6 +25,13 @@ const translations = {
 		employeesBtn: 'Добавить',
 		assignmentsDesc: 'Управление назначениями сотрудников',
 		assignmentsBtn: 'Создать',
+		addProjectTitle: 'Новый проект',
+		addProjNameLabel: 'Название:',
+		addProjCompanyLabel: 'Заказчик:',
+		addProjBugetLabel: 'Бюджет:',
+		addProjCapacityLabel: 'Ресурсный объем:',
+		addSubmitBtn: 'Добавить',
+		addCancelBtn: 'Отмена',
 	},
 	en: {
 		employees: "Employees",
@@ -52,6 +59,13 @@ const translations = {
 		employeesBtn: 'Add Employee',
 		assignmentsDesc: 'Manage employee-project assignments',
 		assignmentsBtn: 'Create Assignment',
+		addProjectTitle: 'Add New Project',
+		addProjNameLabel: 'Project Name:',
+		addProjCompanyLabel: 'Company Name:',
+		addProjBugetLabel: 'Budget:',
+		addProjCapacityLabel: 'Employee Capacity:',
+		addSubmitBtn: 'Add',
+		addCancelBtn: 'Cancel',
 	}
 }
 
