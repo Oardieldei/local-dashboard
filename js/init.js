@@ -3,6 +3,7 @@ import { initLanguage, changeLanguage } from "./translate.js"
 import { changeSidebarState } from "./sidebar-hide.js"
 import { addDateBtnListener } from './date-controller.js'
 import { renderPageListener, initRenderPage } from './pages/render.js'
+import { initSideFull } from './pages/side-full.js'
 
 export function initApp() {
 	const state = getState()
@@ -13,6 +14,12 @@ export function initApp() {
 
 	initRenderPage()
 	renderPageListener()
+
+	initSideFull()
+
+
+
+
 	initTranslate()
 }
 

@@ -32,6 +32,10 @@ const translations = {
 		addProjCapacityLabel: 'Ресурсный объем:',
 		addSubmitBtn: 'Добавить',
 		addCancelBtn: 'Отмена',
+		errProjName: 'минимум 3 символа',
+		errCompName: 'минимум 2 символа',
+		errBudget: 'не меньше 1',
+		errCapacity: 'не меньше 1',
 	},
 	en: {
 		employees: "Employees",
@@ -66,6 +70,10 @@ const translations = {
 		addProjCapacityLabel: 'Employee Capacity:',
 		addSubmitBtn: 'Add',
 		addCancelBtn: 'Cancel',
+		errProjName: 'at least 3 characters',
+		errCompName: 'at least 2 characters',
+		errBudget: 'at least 1',
+		errCapacity: 'at least 1',
 	}
 }
 
