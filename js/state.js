@@ -6,25 +6,23 @@ function getReadableDate() {
 	return `${nowDate.getFullYear()}-${normalMonth}`
 }
 
-
 const defaultState = {
-  currentDate: getReadableDate(),
-  data: {}
+	currentDate: getReadableDate(),
+	data: {}
 }
 
 let state = loadFromStorage() || defaultState
 
 export function getState() {
-  return state
+	return state
 }
 
 export function setState(newState) {
-  state = newState
-  saveToStorage(state)
+	state = newState
+	saveToStorage(state)
 }
 
 export function updateState(updater) {
-  updater(state)
-  saveToStorage(state)
+	updater(state)
+	saveToStorage(state)
 }
-

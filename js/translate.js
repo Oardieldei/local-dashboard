@@ -19,6 +19,12 @@ const translations = {
 		month9: "Октябрь",
 		month10: "Ноябрь",
 		month11: "Декабрь",
+		projectsDesc: 'Отслеживание и управление проектами',
+		projectsBtn: 'Новый проект',
+		employeesDesc: 'Управление командой',
+		employeesBtn: 'Добавить',
+		assignmentsDesc: 'Управление назначениями сотрудников',
+		assignmentsBtn: 'Создать',
 	},
 	en: {
 		employees: "Employees",
@@ -40,6 +46,12 @@ const translations = {
 		month9: "October",
 		month10: "November",
 		month11: "December",
+		projectsDesc: 'Track and manage all projects',
+		projectsBtn: 'New Project',
+		employeesDesc: 'Manage your team members',
+		employeesBtn: 'Add Employee',
+		assignmentsDesc: 'Manage employee-project assignments',
+		assignmentsBtn: 'Create Assignment',
 	}
 }
 
