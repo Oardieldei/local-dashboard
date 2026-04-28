@@ -34,8 +34,8 @@ const translations = {
 		addCancelBtn: 'Отмена',
 		errProjName: 'минимум 3 символа',
 		errCompName: 'минимум 2 символа',
-		errBudget: 'не меньше 1',
-		errCapacity: 'не меньше 1',
+		errBudget: 'число, не меньше 1',
+		errCapacity: 'число, не меньше 1',
 	},
 	en: {
 		employees: "Employees",
@@ -72,8 +72,8 @@ const translations = {
 		addCancelBtn: 'Cancel',
 		errProjName: 'at least 3 characters',
 		errCompName: 'at least 2 characters',
-		errBudget: 'at least 1',
-		errCapacity: 'at least 1',
+		errBudget: 'number, at least 1',
+		errCapacity: 'number, at least 1',
 	}
 }
 

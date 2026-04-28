@@ -1,3 +1,6 @@
+import { addProject, closeSideBlock } from './actions-projects.js'
+import { updateState } from '../state.js'
+
 const sideProjWrapper = document.querySelector('.add_project')
 const sideLi = sideProjWrapper.querySelectorAll('.add_project__item')
 const submitBtn = sideProjWrapper.querySelector('.add_project__btn_submit')
@@ -75,7 +78,8 @@ function focusOutProjValues() {
 export function controlProjSideBlock() {
 	submitBtn.addEventListener('click', () => {
 		if (checkProjValues()) {
-			console.log('success')
+			updateState(addProject)
+			closeSideBlock()
 		}
 	})
 
