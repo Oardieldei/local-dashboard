@@ -23,3 +23,8 @@ export function renderPageListener() {
 export function initRenderPage() {
 	pageChooser.projects()
 }
+
+export function updatePage() {
+	const activeTab = document.querySelector('.nav__item.active')
+		pageChooser[activeTab.dataset.page]()
+}

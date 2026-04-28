@@ -36,6 +36,10 @@ const translations = {
 		errCompName: 'минимум 2 символа',
 		errBudget: 'число, не меньше 1',
 		errCapacity: 'число, не меньше 1',
+		budget: 'Бюджет',
+		estIncome: 'Расч. доход',
+		capacity: 'Ресурсы',
+		progress: 'Прогресс',
 	},
 	en: {
 		employees: "Employees",
@@ -74,6 +78,10 @@ const translations = {
 		errCompName: 'at least 2 characters',
 		errBudget: 'number, at least 1',
 		errCapacity: 'number, at least 1',
+		budget: 'Budget',
+		estIncome: 'Est. Income',
+		capacity: 'Capacity',
+		progress: 'Progress',
 	}
 }
 

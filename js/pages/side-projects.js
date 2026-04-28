@@ -1,4 +1,5 @@
 import { addProject, closeSideBlock } from './actions-projects.js'
+import { updatePage } from './render.js'
 import { updateState } from '../state.js'
 
 const sideProjWrapper = document.querySelector('.add_project')
@@ -80,6 +81,7 @@ export function controlProjSideBlock() {
 		if (checkProjValues()) {
 			updateState(addProject)
 			closeSideBlock()
+			updatePage()
 		}
 	})
 

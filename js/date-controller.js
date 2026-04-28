@@ -1,4 +1,5 @@
 import { getState, updateState } from './state.js'
+import { updatePage } from './pages/render.js'
 
 export function changeDate(year, month) {
 	const dateKey = `${year}-${month.padStart(2, '0')}`
@@ -35,5 +36,7 @@ export function addDateBtnListener() {
 
 		const select2 = document.querySelector('.main__header__date_chooser__year')
 		document.querySelector('.curr_date__year').textContent = select2.options[select2.selectedIndex].text
+
+		updatePage()
 	})
 }
