@@ -1,6 +1,7 @@
 import { renderProjects } from './render-projects.js'
 import { renderEmployees } from './render-employees.js'
 import { renderAassignments } from './render-assignments.js'
+import { closeAllModals } from './side-full.js'
 
 const pageChooser = {
 	projects: renderProjects,
@@ -13,8 +14,9 @@ export function renderPageListener() {
 	navItems.forEach(item => {
 		item.addEventListener('click', () => {
 			if (item.classList.contains('active')) return
+			closeAllModals()
 			pageChooser[item.dataset.page]()
-			navItems.forEach(item => {item.classList.remove('active')})
+			navItems.forEach(item => { item.classList.remove('active') })
 			item.classList.add('active')
 		})
 	})
@@ -25,6 +27,7 @@ export function initRenderPage() {
 }
 
 export function updatePage() {
+	closeAllModals()
 	const activeTab = document.querySelector('.nav__item.active')
-		pageChooser[activeTab.dataset.page]()
+	pageChooser[activeTab.dataset.page]()
 }

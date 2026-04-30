@@ -1,8 +1,10 @@
+import { closeAllModals } from './side-full.js'
+
 const addProjectWrapper = document.querySelector('.add_project')
 const sideLi = addProjectWrapper.querySelectorAll('.add_project__item')
-const submitBtn = addProjectWrapper.querySelector('.add_project__btn_submit')
 
 export function openSideBlock() {
+	closeAllModals()
 	addProjectWrapper.classList.remove('side_block-hide')
 }
 

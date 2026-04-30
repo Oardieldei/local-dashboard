@@ -1,5 +1,6 @@
 import { getEmployeesByCurrentDate } from './data-employees.js'
 import { initLanguage } from "../translate.js"
+import { addCancelBtnListener, openSideBlock } from "./actions-employees.js"
 
 export function renderEmployees() {
 	const employees = getEmployeesByCurrentDate()
@@ -8,6 +9,7 @@ export function renderEmployees() {
 	container.innerHTML = ''
 
 	container.append(createEmployeesHeader())
+	addCancelBtnListener()
 
 	/* Object.values(employees).forEach(emp => {
 		const div = document.createElement('div')
@@ -39,6 +41,7 @@ function createEmployeesHeader() {
 	const addBtn = document.createElement('button')
 	addBtn.classList.add('main__topbox__btn')
 	addBtn.dataset.i18n = 'employeesBtn'
+	addBtn.addEventListener('click', openSideBlock)
 	newElem.append(addBtn)
 
 	return newElem

@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="./css/main-full.css">
 	<link rel="stylesheet" href="./css/add-form.css">
 	<link rel="stylesheet" href="./css/tabs/projects.css">
+	<link rel="stylesheet" href="./css/tabs/employees.css">
 </head>
 
 <body class="body">
@@ -157,6 +158,53 @@
 			<div class="add_project__btns side_block__btns">
 				<div class="add_project__btn_submit side_block__btn_submit" data-i18n="addSubmitBtn"></div>
 				<div class="add_project__btn_cancel side_block__btn_cancel" data-i18n="addCancelBtn"></div>
+			</div>
+		</div>
+		<div class="add_employee side_block side_block-hide">
+			<p class="side_block__title" data-i18n="addEmployeeTitle"></p>
+			<ul class="add_employee__list side_block__list">
+				<li class="add_employee__item side_block__item">
+					<label for="addempfname" data-i18n="addEmpFNameLabel"></label>
+					<input type="text" name="addempfname" id="addempfname">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpFName"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addemplname" data-i18n="addEmpLNameLabel"></label>
+					<input type="text" name="addemplname" id="addemplname">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpLName"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempdob" data-i18n="addEmpDOBLabel"></label>
+					<input type="date" name="addempdob" id="addempdob">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpDOB"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempemail" data-i18n="addEmpEmailLabel"></label>
+					<input type="email" name="addempemail" id="addempemail">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpEmail"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempposition" data-i18n="addEmpPositionLabel"></label>
+					<select name="addempposition" id="addempposition">
+						<option value="junior" selected>Junior</option>
+						<option value="middle">Middle</option>
+						<option value="senior">Senior</option>
+						<option value="lead">Lead</option>
+						<option value="architect">Architect</option>
+						<option value="bo">BO</option>
+						<option value="rickastley">Rick Astley</option>
+					</select>
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpPosition"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempsalary" data-i18n="addEmpSalaryLabel"></label>
+					<input type="number" name="addempsalary" id="addempsalary">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpSalary"></span>
+				</li>
+			</ul>
+			<div class="add_employee__btns side_block__btns">
+				<div class="add_employee__btn_submit side_block__btn_submit" data-i18n="addSubmitBtn"></div>
+				<div class="add_employee__btn_cancel side_block__btn_cancel" data-i18n="addCancelBtn"></div>
 			</div>
 		</div>
 	</div>

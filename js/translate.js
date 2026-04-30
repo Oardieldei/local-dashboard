@@ -40,6 +40,13 @@ const translations = {
 		estIncome: 'Расч. доход',
 		capacity: 'Ресурсы',
 		progress: 'Прогресс',
+		addEmployeeTitle: 'Добавить сотрудника',
+		addEmpFNameLabel: 'Имя',
+		addEmpLNameLabel: 'Фамилия',
+		addEmpSalaryLabel: 'Зарплата',
+		addEmpDOBLabel: 'Дата рождения',
+		addEmpEmailLabel: 'Email',
+		addEmpPositionLabel: 'Уровень',
 	},
 	en: {
 		employees: "Employees",
@@ -82,6 +89,13 @@ const translations = {
 		estIncome: 'Est. Income',
 		capacity: 'Capacity',
 		progress: 'Progress',
+		addEmployeeTitle: 'Add New Employee',
+		addEmpFNameLabel: 'First Name',
+		addEmpLNameLabel: 'Last Name',
+		addEmpSalaryLabel: 'Salary',
+		addEmpDOBLabel: 'Date Of Birth',
+		addEmpEmailLabel: 'Email',
+		addEmpPositionLabel: 'Position',
 	}
 }
 
