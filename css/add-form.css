@@ -93,7 +93,8 @@
 	display: block;
 }
 
-.error-input > input {
+.error-input > input, 
+.error-input > select {
 	border: 1px solid var(--red);
 }
 

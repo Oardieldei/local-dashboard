@@ -52,6 +52,9 @@ const translations = {
 		addAssProjLabel: 'Проект',
 		addAssCapacityALabel: 'Трудозатраты:',
 		addAssFitLabel: 'Соответствие:',
+		errEmpDOB: '18+',
+		errEmpEmail: 'некорректный email',
+		errEmpPosition: 'ха!',
 	},
 	en: {
 		employees: "Employees",
@@ -106,6 +109,9 @@ const translations = {
 		addAssProjLabel: 'Project',
 		addAssCapacityALabel: 'Capacity Allocation:',
 		addAssFitLabel: 'Project Fit:',
+		errEmpDOB: '18+',
+		errEmpEmail: 'incorrect email',
+		errEmpPosition: 'haha!',
 	}
 }
 

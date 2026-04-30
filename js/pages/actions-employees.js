@@ -20,9 +20,10 @@ export function addCancelBtnListener() {
 	addEmployeeWrapper.querySelector('.add_employee__btn_cancel').addEventListener('click', closeSideBlock)
 }
 
-/*
+
 
 export function addEmployee(state) {
+	/*
 	const newProjId = `proj_${++state.data[state.currentDate].meta.EmployeeCounter}`
 
 	state.data[state.currentDate].Employees[newProjId] = {
@@ -32,6 +33,5 @@ export function addEmployee(state) {
 		budget: sideLi[2].children[1].value,
 		capacity: sideLi[3].children[1].value,
 	}
+		*/
 }
-
-*/
