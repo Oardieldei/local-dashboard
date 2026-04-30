@@ -213,5 +213,28 @@ function createProjectBottom(proj) {
 	const newProjectProgress = document.createElement('div')
 	newProjectProgress.classList.add('projpage__project__progress')
 
+	const newProjectProgressTexts = document.createElement('div')
+	newProjectProgressTexts.classList.add('projpage__project__progress__texts')
+	newProjectProgress.append(newProjectProgressTexts)
+
+	const newProjectProgressTextsTitle = document.createElement('span')
+	newProjectProgressTextsTitle.classList.add('projpage__project__progress__texts_title')
+	newProjectProgressTextsTitle.dataset.i18n = 'progress'
+	newProjectProgressTexts.append(newProjectProgressTextsTitle)
+
+	const newProjectProgressTextsNumber = document.createElement('span')
+	newProjectProgressTextsNumber.classList.add('projpage__project__progress__texts_percent')
+	newProjectProgressTextsNumber.textContent = '?%'
+	newProjectProgressTexts.append(newProjectProgressTextsNumber)
+
+	const newProjectProgressLine = document.createElement('div')
+	newProjectProgressLine.classList.add('projpage__project__progress__line')
+	newProjectProgress.append(newProjectProgressLine)
+
+	const newProjectProgressLineRed = document.createElement('div')
+	newProjectProgressLineRed.classList.add('projpage__project__progress__line_red')
+	newProjectProgressLineRed.style.width = '50%'
+	newProjectProgressLine.append(newProjectProgressLineRed)
+
 	return newProjectProgress
 }

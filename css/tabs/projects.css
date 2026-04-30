@@ -20,7 +20,7 @@
 .projpage__project__titles {
 	display: flex;
 	flex-direction: column;
-	gap: 16px;
+	gap: 12px;
 }
 
 .projpage__project__titles_name {
@@ -111,4 +111,40 @@
 	color: var(--text-muted);
 	font-weight: 400;
 	font-size: 16px;
+}
+
+.projpage__project__progress {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.projpage__project__progress__texts {
+	display: flex;
+	justify-content: space-between;
+}
+
+.projpage__project__progress__texts_title {
+	color: var(--text-muted);
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.projpage__project__progress__texts_percent {
+	color: var(--red);
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.projpage__project__progress__line {
+	width: 100%;
+	height: 8px;
+	border-radius: var(--radius);
+	overflow: hidden;
+	background-color: rgba(226, 226, 226, 0.445);
+}
+
+.projpage__project__progress__line_red {
+	height: 100%;
+	background-color: var(--red);
 }
