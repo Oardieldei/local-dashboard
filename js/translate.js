@@ -24,7 +24,7 @@ const translations = {
 		employeesDesc: 'Управление командой',
 		employeesBtn: 'Добавить',
 		assignmentsDesc: 'Управление назначениями сотрудников',
-		assignmentsBtn: 'Создать',
+		assignmentsBtn: 'Назначить',
 		addProjectTitle: 'Новый проект',
 		addProjNameLabel: 'Название:',
 		addProjCompanyLabel: 'Заказчик:',
@@ -47,6 +47,11 @@ const translations = {
 		addEmpDOBLabel: 'Дата рождения',
 		addEmpEmailLabel: 'Email',
 		addEmpPositionLabel: 'Уровень',
+		addAssignmentTitle: 'Назначить',
+		addAssEmpLabel: 'Сотрудник',
+		addAssProjLabel: 'Проект',
+		addAssCapacityALabel: 'Трудозатраты:',
+		addAssFitLabel: 'Соответствие:',
 	},
 	en: {
 		employees: "Employees",
@@ -96,6 +101,11 @@ const translations = {
 		addEmpDOBLabel: 'Date Of Birth',
 		addEmpEmailLabel: 'Email',
 		addEmpPositionLabel: 'Position',
+		addAssignmentTitle: 'Create Assignment',
+		addAssEmpLabel: 'Employee',
+		addAssProjLabel: 'Project',
+		addAssCapacityALabel: 'Capacity Allocation:',
+		addAssFitLabel: 'Project Fit:',
 	}
 }
 

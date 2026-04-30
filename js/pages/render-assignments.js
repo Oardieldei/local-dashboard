@@ -1,5 +1,6 @@
 import { getAssignmentsByCurrentDate } from './data-assignments.js'
 import { initLanguage } from "../translate.js"
+import { addCancelBtnListener, openSideBlock } from "./actions-assignments.js"
 
 export function renderAassignments() {
 	const assignments = getAssignmentsByCurrentDate()
@@ -8,6 +9,7 @@ export function renderAassignments() {
 	container.innerHTML = ''
 
 	container.append(createAssignmentsHeader())
+	addCancelBtnListener()
 
 	/* Object.values(assignments).forEach(as => {
 		const div = document.createElement('div')
@@ -39,6 +41,7 @@ function createAssignmentsHeader() {
 	const addBtn = document.createElement('button')
 	addBtn.classList.add('main__topbox__btn')
 	addBtn.dataset.i18n = 'assignmentsBtn'
+	addBtn.addEventListener('click', openSideBlock)
 	newElem.append(addBtn)
 
 	return newElem

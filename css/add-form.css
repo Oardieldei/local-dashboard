@@ -55,6 +55,7 @@
   font-weight: 400;
   color: var(--text);
 	width: 300px;
+	accent-color: var(--red);
 }
 
 .side_block__btns {
@@ -94,4 +95,14 @@
 
 .error-input > input {
 	border: 1px solid var(--red);
+}
+
+#addasscapacityaspan,
+#addassfitspan {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
 }
