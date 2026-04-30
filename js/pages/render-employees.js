@@ -11,11 +11,12 @@ export function renderEmployees() {
 	container.append(createEmployeesHeader())
 	addCancelBtnListener()
 
-	/* Object.values(employees).forEach(emp => {
-		const div = document.createElement('div')
-		div.textContent = emp.name
-		container.appendChild(div)
-	}) */
+	const newWrapper = createEmployeesWrapper()
+	container.append(newWrapper)
+
+	Object.values(employees).forEach(emp => {
+		newWrapper.append(createEmployeeItem(emp))
+	})
 
 	initLanguage()
 }
@@ -45,4 +46,125 @@ function createEmployeesHeader() {
 	newElem.append(addBtn)
 
 	return newElem
+}
+
+function createEmployeesWrapper() {
+	const newWrapper = document.createElement('div')
+	newWrapper.classList.add('emppage__wrapper')
+	return newWrapper
+}
+
+function createEmployeeItem(emp) {
+	const newEmployeeWrapper = document.createElement('div')
+	newEmployeeWrapper.classList.add('emppage__employee__wrapper')
+	newEmployeeWrapper.classList.add('grey-block')
+	newEmployeeWrapper.classList.add('grey-block__hover-effect')
+
+	newEmployeeWrapper.append(createEmployeeHeader(emp))
+	newEmployeeWrapper.append(createEmployeeMiddleTop(emp))
+	newEmployeeWrapper.append(createEmployeeMiddleSeparator())
+//	newEmployeeWrapper.append(createEmployeeBottom(emp))
+
+	return newEmployeeWrapper
+}
+
+const positions = {
+	junior: 'Junior',
+	middle: 'Middle',
+	senior: 'Senior',
+	lead: 'Lead',
+	architect: 'Architect',
+	bo: 'BO',
+}
+
+function createEmployeeHeader(emp) {
+	const newEmployeeHeader = document.createElement('div')
+	newEmployeeHeader.classList.add('emppage__employee__header')
+
+	const newEmployeeAvaWrapper = document.createElement('div')
+	newEmployeeAvaWrapper.classList.add('emppage__employee__ava__wrapper')
+	newEmployeeHeader.append(newEmployeeAvaWrapper)
+
+	const newEmployeeNN = document.createElement('span')
+	newEmployeeNN.classList.add('emppage__employee__ava_text')
+	newEmployeeNN.textContent = `${emp.fname[0].toUpperCase()}${emp.lname[0].toUpperCase()}`
+	newEmployeeAvaWrapper.append(newEmployeeNN)
+
+	const newEmployeeTitles = document.createElement('div')
+	newEmployeeTitles.classList.add('emppage__employee__titles')
+	newEmployeeHeader.append(newEmployeeTitles)
+
+	const newEmployeeName = document.createElement('div')
+	newEmployeeName.classList.add('emppage__employee__name')
+	newEmployeeName.textContent = `${emp.fname} ${emp.lname}`
+	newEmployeeTitles.append(newEmployeeName)
+
+	const newEmployeePosition = document.createElement('div')
+	newEmployeePosition.classList.add('emppage__employee__position')
+	newEmployeePosition.textContent = positions[emp.position]
+	newEmployeeTitles.append(newEmployeePosition)
+
+	return newEmployeeHeader
+}
+
+function calculateAge(dateString) {
+  const [day, month, year] = dateString.split('.').map(Number)
+  const birthDate = new Date(year, month - 1, day)
+  const today = new Date()
+  
+  let age = today.getFullYear() - birthDate.getFullYear()
+  const monthDiff = today.getMonth() - birthDate.getMonth()
+
+  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+    age--
+  }
+  
+  return age
+}
+
+function createEmployeeMiddleTop(emp) {
+	const newEmployeeMiddleTop = document.createElement('div')
+	newEmployeeMiddleTop.classList.add('emppage__employee__middletop')
+
+	const newEmployeeEmail = document.createElement('div')
+	newEmployeeEmail.classList.add('emppage__employee__email')
+	newEmployeeEmail.classList.add('emppage__employee__texticon_item')
+	newEmployeeMiddleTop.append(newEmployeeEmail)
+
+	const newEmployeeEmailIcon = document.createElement('div')
+	newEmployeeEmailIcon.classList.add('emppage__employee__email__icon')
+	newEmployeeEmailIcon.classList.add('emppage__employee__icon')
+	newEmployeeEmailIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail shrink-0" data-fg-ddts45="1.36:4.3879:/src/app/components/Employees.tsx:128:19:6256:39:e:Mail::::::D4VR" data-fgid-ddts45=":rj9:"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>'
+	newEmployeeEmail.append(newEmployeeEmailIcon)
+
+	const newEmployeeEmailText = document.createElement('div')
+	newEmployeeEmailText.classList.add('emppage__employee__email__text')
+	newEmployeeEmailText.classList.add('emppage__employee__text')
+	newEmployeeEmailText.textContent = emp.email
+	newEmployeeEmail.append(newEmployeeEmailText)
+
+		const newEmployeeDOP = document.createElement('div')
+	newEmployeeDOP.classList.add('emppage__employee__dop')
+	newEmployeeDOP.classList.add('emppage__employee__texticon_item')
+	newEmployeeMiddleTop.append(newEmployeeDOP)
+
+	const newEmployeeDOPIcon = document.createElement('div')
+	newEmployeeDOPIcon.classList.add('emppage__employee__dop__icon')
+	newEmployeeDOPIcon.classList.add('emppage__employee__icon')
+	newEmployeeDOPIcon.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar shrink-0" data-fg-ddts49="1.36:4.3879:/src/app/components/Employees.tsx:132:19:6478:43:e:Calendar::::::Bbz4" data-fgid-ddts49=":rjc:"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg>'
+	newEmployeeDOP.append(newEmployeeDOPIcon)
+
+	const newEmployeeDOPText = document.createElement('div')
+	newEmployeeDOPText.classList.add('emppage__employee__dob__text')
+	newEmployeeDOPText.classList.add('emppage__employee__text')
+	newEmployeeDOPText.textContent = `${emp.dob} (${calculateAge(emp.dob)})`
+	newEmployeeDOP.append(newEmployeeDOPText)
+
+	return newEmployeeMiddleTop
+}
+
+function createEmployeeMiddleSeparator() {
+	const separator = document.createElement('div')
+	separator.classList.add('emppage__employee_separator')
+	return separator
 }

@@ -19,7 +19,7 @@
 }
 
 .grey-block__hover-effect:hover {
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.137);
 }
 
 .main__header__sidebar_arrow {
@@ -129,7 +129,7 @@
 
 .main__topbox__p {
 	color: var(--text-muted);
-	font-size: 14px
+	font-size: 14px;
 }
 
 .main__topbox__btn {
