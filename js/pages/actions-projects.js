@@ -8,7 +8,7 @@ export function openSideBlock() {
 	addProjectWrapper.classList.remove('side_block-hide')
 }
 
-export function closeSideBlock() {
+export function closeProjSideBlock() {
 	addProjectWrapper.classList.add('side_block-hide')
 	addProjectWrapper.querySelectorAll('.side_block__item').forEach(elem => {
 		elem.classList.remove('error-input')
@@ -17,7 +17,7 @@ export function closeSideBlock() {
 }
 
 export function addCancelBtnListener() {
-	addProjectWrapper.querySelector('.add_project__btn_cancel').addEventListener('click', closeSideBlock)
+	addProjectWrapper.querySelector('.add_project__btn_cancel').addEventListener('click', closeProjSideBlock)
 }
 
 export function addProject(state) {

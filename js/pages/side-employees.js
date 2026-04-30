@@ -1,4 +1,4 @@
-import { addEmployee, closeSideBlock } from './actions-employees.js'
+import { addEmployee, closeEmpSideBlock } from './actions-employees.js'
 import { updatePage } from './render.js'
 import { updateState } from '../state.js'
 
@@ -120,7 +120,7 @@ export function controlEmpSideBlock() {
 	submitBtn.addEventListener('click', () => {
 		if (checkEmpValues()) {
 			updateState(addEmployee)
-			closeSideBlock()
+			closeEmpSideBlock()
 			updatePage()
 		}
 	})

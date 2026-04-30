@@ -1,4 +1,4 @@
-import { addProject, closeSideBlock } from './actions-projects.js'
+import { addProject, closeProjSideBlock } from './actions-projects.js'
 import { updatePage } from './render.js'
 import { updateState } from '../state.js'
 
@@ -80,7 +80,7 @@ export function controlProjSideBlock() {
 	submitBtn.addEventListener('click', () => {
 		if (checkProjValues()) {
 			updateState(addProject)
-			closeSideBlock()
+			closeProjSideBlock()
 			updatePage()
 		}
 	})
