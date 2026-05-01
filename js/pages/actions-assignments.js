@@ -1,37 +1,41 @@
 import { closeAllModals } from './side-full.js'
+import { addAssOptions } from './side-assignments.js'
 
 const addAssignmentWrapper = document.querySelector('.add_assignment')
 const sideLi = addAssignmentWrapper.querySelectorAll('.add_assignment__item')
 
 export function openSideBlock() {
 	closeAllModals()
+	addAssOptions()
 	addAssignmentWrapper.classList.remove('side_block-hide')
 }
 
-export function closeSideBlock() {
+export function closeAssSideBlock() {
 	addAssignmentWrapper.classList.add('side_block-hide')
-	addAssignmentWrapper.querySelectorAll('.side_block__item').forEach(elem => {
-		elem.classList.remove('error-input')
-		elem.children[1].value = ''
+	addAssignmentWrapper.querySelectorAll('.side_block__item').forEach((elem, index) => {
+		if (index === 1 || index === 0) {
+			elem.children[1].innerHTML = ''
+		} else {
+			elem.children[2].value = 1
+			elem.children[1].textContent = '1'
+			elem.children[2].dispatchEvent(new Event('input'))
+		}
 	})
 }
 
 export function addCancelBtnListener() {
-	addAssignmentWrapper.querySelector('.add_assignment__btn_cancel').addEventListener('click', closeSideBlock)
+	addAssignmentWrapper.querySelector('.add_assignment__btn_cancel').addEventListener('click', closeAssSideBlock)
 }
-
-/*
 
 export function addAssignment(state) {
-	const newProjId = `proj_${++state.data[state.currentDate].meta.assignmentCounter}`
+	const newAssId = `as_${++state.data[state.currentDate].meta.assignmentCounter}`
+	console.log('great')
 
-	state.data[state.currentDate].Assignments[newProjId] = {
-		id: newProjId,
-		name: sideLi[0].children[1].value,
-		customer: sideLi[1].children[1].value,
-		budget: sideLi[2].children[1].value,
-		capacity: sideLi[3].children[1].value,
+	state.data[state.currentDate].assignments[newAssId] = {
+		id: newAssId,
+		empId: sideLi[0].children[1].value,
+		projId: sideLi[1].children[1].value,
+		capacity: sideLi[2].children[2].value,
+		fit: sideLi[3].children[2].value,
 	}
 }
-
-*/
