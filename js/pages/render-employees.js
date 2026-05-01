@@ -63,7 +63,9 @@ function createEmployeeItem(emp) {
 	newEmployeeWrapper.append(createEmployeeHeader(emp))
 	newEmployeeWrapper.append(createEmployeeMiddleTop(emp))
 	newEmployeeWrapper.append(createEmployeeMiddleSeparator())
-//	newEmployeeWrapper.append(createEmployeeBottom(emp))
+	newEmployeeWrapper.append(createEmployeeMiddleBottom(emp))
+	newEmployeeWrapper.append(createEmployeeMiddleSeparator())
+	newEmployeeWrapper.append(createEmployeeFooter(emp))
 
 	return newEmployeeWrapper
 }
@@ -108,18 +110,18 @@ function createEmployeeHeader(emp) {
 }
 
 function calculateAge(dateString) {
-  const [day, month, year] = dateString.split('.').map(Number)
-  const birthDate = new Date(year, month - 1, day)
-  const today = new Date()
-  
-  let age = today.getFullYear() - birthDate.getFullYear()
-  const monthDiff = today.getMonth() - birthDate.getMonth()
+	const [day, month, year] = dateString.split('.').map(Number)
+	const birthDate = new Date(year, month - 1, day)
+	const today = new Date()
 
-  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-    age--
-  }
-  
-  return age
+	let age = today.getFullYear() - birthDate.getFullYear()
+	const monthDiff = today.getMonth() - birthDate.getMonth()
+
+	if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+		age--
+	}
+
+	return age
 }
 
 function createEmployeeMiddleTop(emp) {
@@ -143,7 +145,7 @@ function createEmployeeMiddleTop(emp) {
 	newEmployeeEmailText.textContent = emp.email
 	newEmployeeEmail.append(newEmployeeEmailText)
 
-		const newEmployeeDOP = document.createElement('div')
+	const newEmployeeDOP = document.createElement('div')
 	newEmployeeDOP.classList.add('emppage__employee__dop')
 	newEmployeeDOP.classList.add('emppage__employee__texticon_item')
 	newEmployeeMiddleTop.append(newEmployeeDOP)
@@ -167,4 +169,84 @@ function createEmployeeMiddleSeparator() {
 	const separator = document.createElement('div')
 	separator.classList.add('emppage__employee_separator')
 	return separator
+}
+
+function createEmployeeMiddleBottom(emp) {
+	const newEmpMiddleBottom = document.createElement('div')
+	newEmpMiddleBottom.classList.add('emppage__employee__middlebottom')
+
+	const newEmpSalaryWrapper = document.createElement('div')
+	newEmpSalaryWrapper.classList.add('emppage__employee__middlebottom__item')
+	newEmpMiddleBottom.append(newEmpSalaryWrapper)
+
+	const newEmpSalaryText = document.createElement('span')
+	newEmpSalaryText.classList.add('emppage__employee__middlebottom__item_text')
+	newEmpSalaryText.dataset.i18n = 'addEmpSalaryLabel'
+	newEmpSalaryWrapper.append(newEmpSalaryText)
+
+	const newEmpSalaryValue = document.createElement('span')
+	newEmpSalaryValue.classList.add('emppage__employee__middlebottom__item_num')
+	newEmpSalaryValue.textContent = emp.salary
+	newEmpSalaryWrapper.append(newEmpSalaryValue)
+
+	const newEmpAssignmentsWrapper = document.createElement('div')
+	newEmpAssignmentsWrapper.classList.add('emppage__employee__middlebottom__item')
+	newEmpMiddleBottom.append(newEmpAssignmentsWrapper)
+
+	const newEmpAssignmentsText = document.createElement('span')
+	newEmpAssignmentsText.classList.add('emppage__employee__middlebottom__item_text')
+	newEmpAssignmentsText.dataset.i18n = 'assignments'
+	newEmpAssignmentsWrapper.append(newEmpAssignmentsText)
+
+	const newEmpAssignmentsValue = document.createElement('span')
+	newEmpAssignmentsValue.classList.add('emppage__employee__middlebottom__item_num')
+	newEmpAssignmentsValue.textContent = '?'
+	newEmpAssignmentsWrapper.append(newEmpAssignmentsValue)
+
+	const newEmpEstPaymentWrapper = document.createElement('div')
+	newEmpEstPaymentWrapper.classList.add('emppage__employee__middlebottom__item')
+	newEmpMiddleBottom.append(newEmpEstPaymentWrapper)
+
+	const newEmpEstPaymentText = document.createElement('span')
+	newEmpEstPaymentText.classList.add('emppage__employee__middlebottom__item_text')
+	newEmpEstPaymentText.dataset.i18n = 'estPayment'
+	newEmpEstPaymentWrapper.append(newEmpEstPaymentText)
+
+	const newEmpEstPaymentValue = document.createElement('span')
+	newEmpEstPaymentValue.classList.add('emppage__employee__middlebottom__item_num')
+	newEmpEstPaymentValue.textContent = '?'
+	newEmpEstPaymentWrapper.append(newEmpEstPaymentValue)
+
+	const newEmpProjEncomeWrapper = document.createElement('div')
+	newEmpProjEncomeWrapper.classList.add('emppage__employee__middlebottom__item')
+	newEmpMiddleBottom.append(newEmpProjEncomeWrapper)
+
+	const newEmpProjEncomeText = document.createElement('span')
+	newEmpProjEncomeText.classList.add('emppage__employee__middlebottom__item_text')
+	newEmpProjEncomeText.dataset.i18n = 'projEncome'
+	newEmpProjEncomeWrapper.append(newEmpProjEncomeText)
+
+	const newEmpProjEncomeValue = document.createElement('span')
+	newEmpProjEncomeValue.classList.add('emppage__employee__middlebottom__item_num')
+	newEmpProjEncomeValue.textContent = '?'
+	newEmpProjEncomeWrapper.append(newEmpProjEncomeValue)
+
+	return newEmpMiddleBottom
+}
+
+function createEmployeeFooter(emp) {
+	const newEmployeeFooter = document.createElement('div')
+	newEmployeeFooter.classList.add('emppage__employee__footer')
+
+	const newEmployeeBtnAssignments = document.createElement('div')
+	newEmployeeBtnAssignments.classList.add('emppage__employee__footer_assignments')
+	newEmployeeBtnAssignments.dataset.i18n = 'assignments'
+	newEmployeeFooter.append(newEmployeeBtnAssignments)
+
+	const newEmployeeBtnDelete = document.createElement('div')
+	newEmployeeBtnDelete.classList.add('emppage__employee__footer_delete')
+	newEmployeeBtnDelete.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" data-fg-cyth44="1.37:58.35:/src/app/components/Projects.tsx:161:19:6021:20:e:Trash2::::::c98" data-fgid-cyth44=":r7j:"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>'
+	newEmployeeFooter.append(newEmployeeBtnDelete)
+
+	return newEmployeeFooter
 }
