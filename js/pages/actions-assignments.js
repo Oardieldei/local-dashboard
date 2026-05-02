@@ -29,7 +29,6 @@ export function addCancelBtnListener() {
 
 export function addAssignment(state) {
 	const newAssId = `as_${++state.data[state.currentDate].meta.assignmentCounter}`
-	console.log('great')
 
 	state.data[state.currentDate].assignments[newAssId] = {
 		id: newAssId,

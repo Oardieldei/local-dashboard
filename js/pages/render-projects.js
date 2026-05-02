@@ -1,6 +1,7 @@
 import { getProjectsByCurrentDate } from './data-projects.js'
 import { initLanguage } from "../translate.js"
 import { addCancelBtnListener, openSideBlock } from "./actions-projects.js"
+import { getProjectCapacity, getProjectProgress } from './calculation.js'
 
 export function renderProjects() {
 	const projects = getProjectsByCurrentDate()
@@ -179,7 +180,7 @@ function createProjectMiddle(proj) {
 
 	const newProjectInfoItemCapacityText = document.createElement('span')
 	newProjectInfoItemCapacityText.classList.add('projpage__project__info__item_text')
-	newProjectInfoItemCapacityText.textContent = '?/' + proj.capacity
+	newProjectInfoItemCapacityText.textContent = `${getProjectCapacity(proj.id)}/${proj.capacity}`
 	newProjectInfoItemCapacityContent.append(newProjectInfoItemCapacityText)
 
 	const newProjectInfoItemProgress = document.createElement('li')
@@ -203,7 +204,7 @@ function createProjectMiddle(proj) {
 
 	const newProjectInfoItemProgressText = document.createElement('span')
 	newProjectInfoItemProgressText.classList.add('projpage__project__info__item_text')
-	newProjectInfoItemProgressText.textContent = '?%'
+	newProjectInfoItemProgressText.textContent = `${getProjectProgress(proj.id)}%`
 	newProjectInfoItemProgressContent.append(newProjectInfoItemProgressText)
 
 	return newProjectInfo
@@ -224,7 +225,7 @@ function createProjectBottom(proj) {
 
 	const newProjectProgressTextsNumber = document.createElement('span')
 	newProjectProgressTextsNumber.classList.add('projpage__project__progress__texts_percent')
-	newProjectProgressTextsNumber.textContent = '?%'
+	newProjectProgressTextsNumber.textContent = `${getProjectProgress(proj.id)}%`
 	newProjectProgressTexts.append(newProjectProgressTextsNumber)
 
 	const newProjectProgressLine = document.createElement('div')
@@ -233,7 +234,7 @@ function createProjectBottom(proj) {
 
 	const newProjectProgressLineRed = document.createElement('div')
 	newProjectProgressLineRed.classList.add('projpage__project__progress__line_red')
-	newProjectProgressLineRed.style.width = '50%'
+	newProjectProgressLineRed.style.width = `${getProjectProgress(proj.id)}%`
 	newProjectProgressLine.append(newProjectProgressLineRed)
 
 	return newProjectProgress
