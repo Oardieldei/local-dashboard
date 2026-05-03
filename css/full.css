@@ -1,0 +1,25 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #111;
+  --text-muted: #6b7280;
+	--text-inverted: oklch(0.985 0 0);
+  --red: #be123c;
+  --red-hover: #9f1239;
+  --border: rgba(0,0,0,0.1);
+  --radius: 10px;
+}
+
+.body {
+  background-color: var(--bg);
+	font-family: "Inter", sans-serif;
+	position: relative;
+}
+
+.full_wrapper {
+	display: flex;
+}
+
+.main {
+	width: 100%;
+}

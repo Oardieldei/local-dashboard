@@ -1,0 +1,32 @@
+.modal__wrapper {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: #00000086;
+	display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.change_assignment__shown {
+	display: flex;
+}
+
+.change_assignment__wrapper {
+	padding: 24px;
+}
+
+.modal-p {
+	padding: 8px 10px;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+	width: 300px;
+	white-space: nowrap;
+	overflow: hidden;
+  text-overflow: ellipsis;
+}

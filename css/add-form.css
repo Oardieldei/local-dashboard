@@ -1,0 +1,124 @@
+.full_wrapper {
+	position: relative;
+}
+
+.side_block {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-height: 100vh;
+	bottom: 0;
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	box-shadow: -2px 0 10px #0000001a;
+}
+
+.side_block.side_block-hide {
+	display: none;
+}
+
+.side_block__title {
+	padding: 24px;
+	color: var(--red);
+	font-weight: 600;
+	font-size: 26px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.side_block__list {
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 26px;
+}
+
+.side_block__item {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	position: relative;
+}
+
+.side_block__item > label {
+	font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.side_block__item > input, 
+.side_block__item > select {
+	padding: 8px 10px;
+	border-radius: var(--radius);
+	border: 1px solid var(--border);
+	font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+	width: 300px;
+	accent-color: var(--red);
+}
+
+.side_block__btns {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	padding: 8px 24px;
+}
+
+.side_block__btns > * {
+	padding: 8px 16px;
+	font-size: 16px;
+	font-weight: 500;
+	color: var(--text-inverted);
+	background-color: var(--red);
+	border-radius: var(--radius);
+	transition: background-color .3s;
+}
+
+.side_block__btns > *:hover {
+	cursor: pointer;
+	background-color: var(--red-hover);
+}
+
+.side_block__error_msg {
+	position: absolute;
+	right: 3px;
+	bottom: -14px;
+	font-size: 12px;
+	color: var(--red);
+	display: none;
+}
+
+.error-input .side_block__error_msg {
+	display: block;
+}
+
+.error-input > input, 
+.error-input > select {
+	border: 1px solid var(--red);
+}
+
+#addasscapacityaspan,
+#addassfitspan {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.add_assignment__stat,
+.change_assignment__stat {
+	margin: 24px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.add_assignment__stat__item,
+.change_assignment__stat__item {
+	display: flex;
+	justify-content: space-between;
+}

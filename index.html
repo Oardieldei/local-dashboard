@@ -1,11 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>I'm here for nothing</title>
+	<title>Local dashboard</title>
+	<link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="./css/clean.css">
+	<link rel="stylesheet" href="./css/full.css">
+	<link rel="stylesheet" href="./css/sidebar.css">
+	<link rel="stylesheet" href="./css/main-full.css">
+	<link rel="stylesheet" href="./css/add-form.css">
+	<link rel="stylesheet" href="./css/tabs/projects.css">
+	<link rel="stylesheet" href="./css/tabs/employees.css">
+	<link rel="stylesheet" href="./css/tabs/assignments.css">
+	<link rel="stylesheet" href="./css/modals.css">
 </head>
-<body>
-	
+
+<body class="body">
+	<div class="full_wrapper">
+		<aside class="sidebar">
+			<header class="header">
+				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="logo" target="_blank">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff"
+						stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+						<rect width="20" height="14" x="2" y="6" rx="2"></rect>
+					</svg>
+				</a>
+				<h1 class="h1">Dashboard</h1>
+			</header>
+			<nav class="nav">
+				<ul class="nav_ul">
+					<li class="nav__item active" data-page="projects">
+						<div class="nav__item_icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								sstroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+								<rect width="20" height="14" x="2" y="6" rx="2"></rect>
+							</svg>
+						</div>
+						<div class="nav__item_text" data-i18n="projects"></div>
+					</li>
+					<li class="nav__item" data-page="employees">
+						<div class="nav__item_icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+								<circle cx="9" cy="7" r="4"></circle>
+								<path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+								<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+							</svg>
+						</div>
+						<div class="nav__item_text" data-i18n="employees"></div>
+					</li>
+					<li class="nav__item" data-page="assignments">
+						<div class="nav__item_icon">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path
+									d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z">
+								</path>
+								<path d="M8 10v4"></path>
+								<path d="M12 10v2"></path>
+								<path d="M16 10v6"></path>
+							</svg>
+						</div>
+						<div class="nav__item_text" data-i18n="assignments"></div>
+					</li>
+				</ul>
+			</nav>
+			<footer class="footer">
+				<div class="lang-changer__wrapper">
+					<div class="lang-changer__icon">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="12" cy="12" r="10"></circle>
+							<path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+							<path d="M2 12h20"></path>
+						</svg>
+					</div>
+					<span class="lang-changer__text" data-i18n="langtext"></span>
+					<span class="lang-changer__lang" data-i18n="lang"></span>
+				</div>
+			</footer>
+		</aside>
+		<main class="main">
+			<div class="main__header grey-block">
+				<div class="main__header__sidebar_arrow">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<rect width="18" height="18" x="3" y="3" rx="2"></rect>
+						<path d="M9 3v18"></path>
+						<path d="m16 15-3-3 3-3"></path>
+					</svg>
+				</div>
+				<div class="main__header__separator"></div>
+				<div class="main__header__date_chooser">
+					<select id="month" name="month" class="main__header__date_chooser__input main__header__date_chooser__month">
+						<option value="0" data-i18n="month0"></option>
+						<option value="1" data-i18n="month1"></option>
+						<option value="2" data-i18n="month2"></option>
+						<option value="3" data-i18n="month3"></option>
+						<option value="4" data-i18n="month4"></option>
+						<option value="5" data-i18n="month5"></option>
+						<option value="6" data-i18n="month6"></option>
+						<option value="7" data-i18n="month7"></option>
+						<option value="8" data-i18n="month8"></option>
+						<option value="9" data-i18n="month9"></option>
+						<option value="10" data-i18n="month10"></option>
+						<option value="11" data-i18n="month11"></option>
+					</select>
+					<select id="year" name="year" class="main__header__date_chooser__input main__header__date_chooser__year">
+						<option value="2025">2025</option>
+						<option value="2026">2026</option>
+						<option value="2027">2027</option>
+					</select>
+					<div class="main__header__date_chooser__btn" data-i18n="datechoose"></div>
+				</div>
+				<div class="main__header__date_info">
+					<span class="main__header__date_info__span" data-i18n="datetext"></span>
+					<span class="main__header__date_info__span curr_date__month"></span>
+					<span class="main__header__date_info__span curr_date__year">2026</span>
+				</div>
+			</div>
+			<div class="pages__wrapper">
+
+			</div>
+		</main>
+		<div class="add_project side_block side_block-hide">
+			<p class="side_block__title" data-i18n="addProjectTitle"></p>
+			<ul class="add_project__list side_block__list">
+				<li class="add_project__item side_block__item">
+					<label for="addprojname" data-i18n="addProjNameLabel"></label>
+					<input type="text" name="addprojname" id="addprojname">
+					<span class="add_project__error_msg side_block__error_msg" data-i18n="errProjName"></span>
+				</li>
+				<li class="add_project__item side_block__item">
+					<label for="addprojcompany" data-i18n="addProjCompanyLabel"></label>
+					<input type="text" name="addprojcompany" id="addprojcompany">
+					<span class="add_project__error_msg side_block__error_msg" data-i18n="errCompName"></span>
+				</li>
+				<li class="add_project__item side_block__item">
+					<label for="addprojbudget" data-i18n="addProjBugetLabel"></label>
+					<input type="number" name="addprojbudget" id="addprojbudget">
+					<span class="add_project__error_msg side_block__error_msg" data-i18n="errBudget"></span>
+				</li>
+				<li class="add_project__item side_block__item">
+					<label for="addprojcapacity" data-i18n="addProjCapacityLabel"></label>
+					<input type="number" name="addprojcapacity" id="addprojcapacity">
+					<span class="add_project__error_msg side_block__error_msg" data-i18n="errCapacity"></span>
+				</li>
+			</ul>
+			<div class="add_project__btns side_block__btns">
+				<div class="add_project__btn_submit side_block__btn_submit" data-i18n="addSubmitBtn"></div>
+				<div class="add_project__btn_cancel side_block__btn_cancel" data-i18n="addCancelBtn"></div>
+			</div>
+		</div>
+		<div class="add_employee side_block side_block-hide">
+			<p class="side_block__title" data-i18n="addEmployeeTitle"></p>
+			<ul class="add_employee__list side_block__list">
+				<li class="add_employee__item side_block__item">
+					<label for="addempfname" data-i18n="addEmpFNameLabel"></label>
+					<input type="text" name="addempfname" id="addempfname">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errCompName"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addemplname" data-i18n="addEmpLNameLabel"></label>
+					<input type="text" name="addemplname" id="addemplname">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errCompName"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempdob" data-i18n="addEmpDOBLabel"></label>
+					<input type="date" name="addempdob" id="addempdob">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpDOB"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempemail" data-i18n="addEmpEmailLabel"></label>
+					<input type="email" name="addempemail" id="addempemail">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpEmail"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempposition" data-i18n="addEmpPositionLabel"></label>
+					<select name="addempposition" id="addempposition">
+						<option value="junior" selected>Junior</option>
+						<option value="middle">Middle</option>
+						<option value="senior">Senior</option>
+						<option value="lead">Lead</option>
+						<option value="architect">Architect</option>
+						<option value="bo">BO</option>
+						<option value="rickastley">Singer</option>
+					</select>
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errEmpPosition"></span>
+				</li>
+				<li class="add_employee__item side_block__item">
+					<label for="addempsalary" data-i18n="addEmpSalaryLabel"></label>
+					<input type="number" name="addempsalary" id="addempsalary">
+					<span class="add_employee__error_msg side_block__error_msg" data-i18n="errCapacity"></span>
+				</li>
+			</ul>
+			<div class="add_employee__btns side_block__btns">
+				<div class="add_employee__btn_submit side_block__btn_submit" data-i18n="addSubmitBtn"></div>
+				<div class="add_employee__btn_cancel side_block__btn_cancel" data-i18n="addCancelBtn"></div>
+			</div>
+		</div>
+		<div class="add_assignment side_block side_block-hide">
+			<p class="side_block__title" data-i18n="addAssignmentTitle"></p>
+			<ul class="add_assignment__list side_block__list">
+				<li class="add_assignment__item side_block__item">
+					<label for="addassemp" data-i18n="addAssEmpLabel"></label>
+					<select name="addassemp" id="addassemp">
+					</select>
+				</li>
+				<li class="add_assignment__item side_block__item">
+					<label for="addassproj" data-i18n="addAssProjLabel"></label>
+					<select name="addassproj" id="addassproj">
+					</select>
+				</li>
+				<li class="add_assignment__item side_block__item">
+					<label for="addasscapacitya" data-i18n="addAssCapacityALabel"></label>
+					<span id="addasscapacityaspan">1</span>
+					<input type="range" name="addasscapacitya" id="addasscapacitya" min="0.1" max="1.5" step="0.1" value="1">
+				</li>
+				<li class="add_assignment__item side_block__item">
+					<label for="addassfit" data-i18n="addAssFitLabel"></label>
+					<span id="addassfitspan">1</span>
+					<input type="range" name="addassfit" id="addassfit" min="0.1" max="1" step="0.1" value="1">
+				</li>
+			</ul>
+			<div class="add_assignment__btns side_block__btns">
+				<div class="add_assignment__btn_submit side_block__btn_submit" data-i18n="addSubmitBtn"></div>
+				<div class="add_assignment__btn_cancel side_block__btn_cancel" data-i18n="addCancelBtn"></div>
+			</div>
+			<div class="add_assignment__stat grey-block">
+				<div class="add_assignment__stat__item">
+					<span class="add_assignment__stat__text" data-i18n="employeeCapacity"></span>
+					<span class="add_assignment__stat__num"></span>
+				</div>
+				<div class="add_assignment__stat__item">
+					<span class="add_assignment__stat__text" data-i18n="projectCapacity"></span>
+					<span class="add_assignment__stat__num"></span>
+				</div>
+				<div class="add_assignment__stat__item">
+					<span class="add_assignment__stat__text" data-i18n="effectiveCapacity"></span>
+					<span class="add_assignment__stat__num"></span>
+				</div>
+				<div class="add_assignment__stat__item">
+					<span class="add_assignment__stat__text" data-i18n="afterAssignment"></span>
+					<span class="add_assignment__stat__num"></span>
+				</div>
+			</div>
+		</div>
+		<div class="change_assignment modal__wrapper">
+			<div class="change_assignment__wrapper grey-block">
+				<p class="side_block__title" data-i18n="changeAssignmentTitle"></p>
+				<ul class="change_assignment__list side_block__list">
+					<li class="change_assignment__item side_block__item">
+						<label for="addassemp" data-i18n="addAssEmpLabel"></label>
+						<p name="addassemp" id="addassemp" class="modal-p"></p>
+					</li>
+					<li class="change_assignment__item side_block__item">
+						<label for="addassproj" data-i18n="addAssProjLabel"></label>
+						<p name="addassproj" id="addassproj" class="modal-p"></p>
+					</li>
+					<li class="change_assignment__item side_block__item">
+						<label for="addasscapacitya" data-i18n="addAssCapacityALabel"></label>
+						<span id="addasscapacityaspan"></span>
+						<input type="range" name="addasscapacitya" id="addasscapacitya" min="0.1" max="1.5" step="0.1" value="1">
+					</li>
+					<li class="change_assignment__item side_block__item">
+						<label for="addassfit" data-i18n="addAssFitLabel"></label>
+						<span id="addassfitspan"></span>
+						<input type="range" name="addassfit" id="addassfit" min="0.1" max="1" step="0.1" value="1">
+					</li>
+				</ul>
+				<div class="change_assignment__btns side_block__btns">
+					<div class="change_assignment__btn_submit side_block__btn_submit" data-i18n="changeSubmitBtn"></div>
+					<div class="change_assignment__btn_cancel side_block__btn_cancel" data-i18n="addCancelBtn"></div>
+				</div>
+				<div class="change_assignment__stat grey-block">
+					<div class="change_assignment__stat__item">
+						<span class="change_assignment__stat__text" data-i18n="employeeCapacity"></span>
+						<span class="change_assignment__stat__num"></span>
+					</div>
+					<div class="change_assignment__stat__item">
+						<span class="change_assignment__stat__text" data-i18n="projectCapacity"></span>
+						<span class="change_assignment__stat__num"></span>
+					</div>
+					<div class="change_assignment__stat__item">
+						<span class="change_assignment__stat__text" data-i18n="effectiveCapacity"></span>
+						<span class="change_assignment__stat__num"></span>
+					</div>
+					<div class="change_assignment__stat__item">
+						<span class="change_assignment__stat__text" data-i18n="afterAssignment"></span>
+						<span class="change_assignment__stat__num"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="module" src="./js/main.js"></script>
 </body>
+
 </html>
