@@ -47,9 +47,11 @@ function addAssRangeTextChanger() {
 
 export function controlAssSideBlock() {
 	submitBtn.addEventListener('click', () => {
-		updateState(addAssignment)
-		closeAssSideBlock()
-		updatePage()
+		if (!statWrapper.classList.contains('red-border')) {
+			updateState(addAssignment)
+			closeAssSideBlock()
+			updatePage()
+		}
 	})
 
 	addAssRangeTextChanger()
@@ -60,7 +62,15 @@ export function addAssStatControl() {
 	const state = getState()
 
 	const empId = sideLi[0].children[1].value
-	statWrapper.children[0].children[1].textContent = `${+getEmployeeCapacity(empId) + +sideLi[2].children[2].value}/1.5`
+	const newCapaValue = +getEmployeeCapacity(empId) + +sideLi[2].children[2].value
+	statWrapper.children[0].children[1].textContent = `${newCapaValue}/1.5`
+	if (newCapaValue > 1.5) {
+		statWrapper.classList.add('red-border')
+		statWrapper.children[0].children[1].classList.add('red-text-side')
+	} else {
+		statWrapper.classList.remove('red-border')
+		statWrapper.children[0].children[1].classList.remove('red-text-side')
+	}
 
 	const projId = sideLi[1].children[1].value
 	const projCapacity = state.data[state.currentDate].projects[projId] ? state.data[state.currentDate].projects[projId].capacity : 'idk'
@@ -71,6 +81,13 @@ export function addAssStatControl() {
 
 	const resValue = (+getProjectCapacity(projId) + +newValue).toFixed(2)
 	statWrapper.children[3].children[1].textContent = `${resValue}/${projCapacity}`
+	if (resValue > projCapacity) {
+		statWrapper.classList.add('orange-border')
+		statWrapper.children[3].children[1].classList.add('orange-text-side')
+	} else {
+		statWrapper.classList.remove('orange-border')
+		statWrapper.children[3].children[1].classList.remove('orange-text-side')
+	}
 }
 
 function addChangeValuesListeners() {

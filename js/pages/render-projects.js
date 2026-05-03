@@ -195,6 +195,9 @@ function createProjectMiddle(proj) {
 	const newProjectInfoItemCapacityText = document.createElement('span')
 	newProjectInfoItemCapacityText.classList.add('projpage__project__info__item_text')
 	newProjectInfoItemCapacityText.textContent = `${getProjectCapacity(proj.id)}/${proj.capacity}`
+	if (+getProjectCapacity(proj.id) > +proj.capacity) {
+		newProjectInfoItemCapacityText.classList.add('red-text')
+	}
 	newProjectInfoItemCapacityContent.append(newProjectInfoItemCapacityText)
 
 	const newProjectInfoItemProgress = document.createElement('li')
