@@ -17,7 +17,7 @@ export function getProjectCapacity(projId) {
 			const fit = Number(a.fit)
 
 			return sum + getEffectiveCapacity(capacity, fit)
-		}, 0)
+		}, 0).toFixed(1)
 }
 
 export function getEmployeeCapacity(empId) {
@@ -26,7 +26,7 @@ export function getEmployeeCapacity(empId) {
 
 	return Object.values(assignments)
 		.filter(a => a.empId === empId)
-		.reduce((sum, a) => sum + Number(a.capacity), 0)
+		.reduce((sum, a) => sum + Number(a.capacity), 0).toFixed(1)
 }
 
 export function getEmployeeCapacityCount(empId) {

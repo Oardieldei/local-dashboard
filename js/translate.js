@@ -68,6 +68,10 @@ const translations = {
 		projectsAssigned: 'Проектов в работе',
 		totalEstimatedIncome: 'Итоговый баланс',
 		benchPayments: 'платежи тунеядцам',
+		employeeCapacity: 'Время работы сотрудника',
+		projectCapacity: 'Ресурсный объем проекта',
+		effectiveCapacity: 'Эффективность сотрудника',
+		afterAssignment: 'Изменения',
 	},
 	en: {
 		employees: "Employees",
@@ -138,6 +142,10 @@ const translations = {
 		projectsAssigned: 'Unique Projects',		
 		totalEstimatedIncome: 'Total Estimated Income',
 		benchPayments: 'bench payments',
+		employeeCapacity: 'Employee Capacity',
+		projectCapacity: 'Project Capacity',
+		effectiveCapacity: 'Effective Capacity',
+		afterAssignment: 'After Assignment',
 	}
 }
 

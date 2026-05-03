@@ -1,5 +1,5 @@
 import { closeAllModals } from './side-full.js'
-import { addAssOptions } from './side-assignments.js'
+import { addAssOptions, addAssStatControl } from './side-assignments.js'
 import { updateState } from '../state.js'
 import { renderAassignments } from './render-assignments.js'
 import { isSure } from './actions.js'
@@ -29,6 +29,7 @@ const sideLi = addAssignmentWrapper.querySelectorAll('.add_assignment__item')
 export function openSideBlock() {
 	closeAllModals()
 	addAssOptions()
+	addAssStatControl()
 	addAssignmentWrapper.classList.remove('side_block-hide')
 }
 
