@@ -2,8 +2,11 @@ import { getProjectsByCurrentDate } from './data-projects.js'
 import { initLanguage } from "../translate.js"
 import { addCancelBtnListener, openSideBlock } from "./actions-projects.js"
 import { getProjectCapacity, getProjectProgress, getProjectProfit } from './calculation.js'
+import { getEffectiveCapacity, getEmployeeRevenue } from './calculation.js'
+import { getState } from '../state.js'
 
 export function renderProjects() {
+	const state = getState()
 	const projects = getProjectsByCurrentDate()
 
 	const container = document.querySelector('.pages__wrapper')
@@ -17,6 +20,8 @@ export function renderProjects() {
 	Object.values(projects).forEach(proj => {
 		newWrapper.append(createProjectItem(proj))
 	})
+
+	container.append(createProjectsSummary(state))
 
 	initLanguage()
 }
@@ -244,4 +249,82 @@ function createProjectBottom(proj) {
 	newProjectProgressLine.append(newProjectProgressLineRed)
 
 	return newProjectProgress
+}
+
+function createProjectsSummary(state) {
+	const wrapper = document.createElement('div')
+	wrapper.classList.add('projpage__summary', 'grey-block')
+
+	const { totalProfit, benchCost } = calculateProjectsSummary(state)
+
+	const text = document.createElement('div')
+	text.classList.add('projpage__summary-text')
+
+	const totalIncomeLabel = document.createElement('span')
+	totalIncomeLabel.dataset.i18n = 'totalEstimatedIncome'
+
+	const benchLabel = document.createElement('span')
+	benchLabel.dataset.i18n = 'benchPayments'
+
+	const value = document.createElement('span')
+	value.textContent = ` $${totalProfit.toFixed(2)} `
+	if (totalProfit < 0) {
+		value.classList.add('red-text')
+	} else if (totalProfit > 0) {
+		value.classList.add('green-text')
+	}
+
+	const benchValue = document.createElement('span')
+	benchValue.textContent = `$${benchCost.toFixed(2)}`
+
+	text.append(
+		totalIncomeLabel,
+		document.createTextNode(':'),
+		value,
+		document.createTextNode(' ('),
+		benchLabel,
+		document.createTextNode(': '),
+		benchValue,
+		document.createTextNode(')')
+	)
+
+	wrapper.append(text)
+
+	return wrapper
+}
+
+function calculateProjectsSummary(state) {
+	const data = state.data[state.currentDate]
+
+	const assignments = data.assignments
+	const employees = data.employees
+
+	let totalProfit = 0
+
+	Object.values(assignments).forEach(as => {
+		const employee = employees[as.empId]
+
+		const capacity = Number(as.capacity)
+		const fit = Number(as.fit)
+
+		const effective = getEffectiveCapacity(capacity, fit)
+		const revenue = getEmployeeRevenue(as)
+		const cost = employee.salary * capacity
+
+		totalProfit += (revenue - cost)
+	})
+
+	const assignedEmployees = new Set(
+		Object.values(assignments).map(a => a.empId)
+	)
+
+	let benchCost = 0
+
+	Object.values(employees).forEach(emp => {
+		if (!assignedEmployees.has(emp.id)) {
+			benchCost += emp.salary * 0.5
+		}
+	})
+
+	return { totalProfit, benchCost }
 }

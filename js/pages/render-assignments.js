@@ -26,6 +26,8 @@ export function renderAassignments() {
 		wrapper.append(createAssignmentRow(as, state))
 	})
 
+	container.append(createAssignmentsSummary(assignments))
+
 	initLanguage()
 }
 
@@ -192,5 +194,89 @@ function getDeleteIcon() {
 		<path d="M14 11V17" stroke-width="2"/>
 		<path d="M5 7L6 21H18L19 7" stroke-width="2"/>
 	</svg>
+	`
+}
+
+function createAssignmentsSummary(assignments) {
+	const wrapper = document.createElement('div')
+	wrapper.classList.add('assignsummary__wrapper')
+
+	const list = Object.values(assignments)
+
+	const totalAssignments = list.length
+	const uniqueEmployees = new Set(list.map(a => a.empId)).size
+	const uniqueProjects = new Set(list.map(a => a.projId)).size
+
+	wrapper.append(
+		createSummaryBlock('assignmentsTotal', totalAssignments, getAssignmentsIcon),
+		createSummaryBlock('employeesAssigned', uniqueEmployees, getEmployeesIcon),
+		createSummaryBlock('projectsAssigned', uniqueProjects, getProjectsIcon)
+	)
+
+	return wrapper
+}
+
+function createSummaryBlock(i18nKey, value, iconFn) {
+	const block = document.createElement('div')
+	block.classList.add('assignsummary__block')
+	block.classList.add('grey-block')
+	block.classList.add('grey-block__hover-effect')
+
+	const header = document.createElement('div')
+	header.classList.add('assignsummary__header')
+	block.append(header)
+
+	const iconWrapper = document.createElement('div')
+	iconWrapper.classList.add('assignsummary__icon')
+	iconWrapper.innerHTML = iconFn()
+	header.append(iconWrapper)
+
+	const text = document.createElement('div')
+	text.classList.add('assignsummary__title')
+	text.dataset.i18n = i18nKey
+	header.append(text)
+
+	const number = document.createElement('div')
+	number.classList.add('assignsummary__value')
+	number.textContent = value
+
+	block.append(number)
+
+	return block
+}
+
+function getAssignmentsIcon() {
+	return `
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path
+									d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z">
+								</path>
+								<path d="M8 10v4"></path>
+								<path d="M12 10v2"></path>
+								<path d="M16 10v6"></path>
+							</svg>
+	`
+}
+
+function getEmployeesIcon() {
+	return `
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+								<circle cx="9" cy="7" r="4"></circle>
+								<path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+								<path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+							</svg>
+	`
+}
+
+function getProjectsIcon() {
+	return `
+	<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+								sstroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+								<rect width="20" height="14" x="2" y="6" rx="2"></rect>
+							</svg>
 	`
 }

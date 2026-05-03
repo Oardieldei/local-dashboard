@@ -63,6 +63,11 @@ const translations = {
 		revenue: 'Доход',
 		cost: 'Расход',
 		profit: 'Итог',
+		assignmentsTotal: 'Всего назначений',
+		employeesAssigned: 'Сотрудников назначено',
+		projectsAssigned: 'Проектов в работе',
+		totalEstimatedIncome: 'Итоговый баланс',
+		benchPayments: 'платежи тунеядцам',
 	},
 	en: {
 		employees: "Employees",
@@ -128,6 +133,11 @@ const translations = {
 		revenue: 'Revenue',
 		cost: 'Cost',
 		profit: 'Profit',
+		assignmentsTotal: 'Total Assignments',
+		employeesAssigned: 'Unique Employees',
+		projectsAssigned: 'Unique Projects',		
+		totalEstimatedIncome: 'Total Estimated Income',
+		benchPayments: 'bench payments',
 	}
 }
 
