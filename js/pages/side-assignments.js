@@ -62,7 +62,7 @@ export function addAssStatControl() {
 	const state = getState()
 
 	const empId = sideLi[0].children[1].value
-	const newCapaValue = +getEmployeeCapacity(empId) + +sideLi[2].children[2].value
+	const newCapaValue = (+getEmployeeCapacity(empId) + +sideLi[2].children[2].value).toFixed(2)
 	statWrapper.children[0].children[1].textContent = `${newCapaValue}/1.5`
 	if (newCapaValue > 1.5) {
 		statWrapper.classList.add('red-border')

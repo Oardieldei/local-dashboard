@@ -1,9 +1,9 @@
 import { getAssignmentsByCurrentDate } from './data-assignments.js'
 import { initLanguage } from "../translate.js"
-import { addCancelBtnListener, openSideBlock } from "./actions-assignments.js"
+import { addCancelBtnListener, openSideBlock, changeAssignment } from "./actions-assignments.js"
 import { getState } from '../state.js'
 import { getEffectiveCapacity, getEmployeeRevenue } from './calculation.js'
-import { deleteAssignment } from './actions-assignments.js'
+import { deleteAssignment, showChangeAssignmentModal } from './actions-assignments.js'
 
 export function renderAassignments() {
 	const assignments = getAssignmentsByCurrentDate()
@@ -164,6 +164,10 @@ function createActionsCell(assId) {
 	const editBtn = document.createElement('button')
 	editBtn.classList.add('assign-btn', 'assign-btn--edit')
 	editBtn.innerHTML = getEditIcon()
+
+	editBtn.addEventListener('click', () => {
+		showChangeAssignmentModal(assId)
+	})
 
 	const deleteBtn = document.createElement('button')
 	deleteBtn.classList.add('assign-btn', 'assign-btn--delete')

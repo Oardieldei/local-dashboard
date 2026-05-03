@@ -108,7 +108,8 @@
   color: var(--text);
 }
 
-.add_assignment__stat {
+.add_assignment__stat,
+.change_assignment__stat {
 	margin: 24px;
 	padding: 16px;
 	display: flex;
@@ -116,7 +117,8 @@
 	gap: 16px;
 }
 
-.add_assignment__stat__item {
+.add_assignment__stat__item,
+.change_assignment__stat__item {
 	display: flex;
 	justify-content: space-between;
 }

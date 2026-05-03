@@ -59,7 +59,7 @@ const translations = {
 		estPayment: 'Расчетный платеж',
 		projEncome: 'Ожидаемый доход',
 		fit: 'Соответствие',
-		effective: 'Эффектинвность',
+		effective: 'Эффективность',
 		revenue: 'Доход',
 		cost: 'Расход',
 		profit: 'Итог',
@@ -68,10 +68,12 @@ const translations = {
 		projectsAssigned: 'Проектов в работе',
 		totalEstimatedIncome: 'Итоговый баланс',
 		benchPayments: 'платежи тунеядцам',
-		employeeCapacity: 'Время работы сотрудника',
-		projectCapacity: 'Ресурсный объем проекта',
-		effectiveCapacity: 'Эффективность сотрудника',
+		employeeCapacity: 'Нагрузка',
+		projectCapacity: 'Ресурсный объем',
+		effectiveCapacity: 'Эффективность',
 		afterAssignment: 'Изменения',
+		changeAssignmentTitle: 'Изменить',
+		changeSubmitBtn: 'Изменить',
 	},
 	en: {
 		employees: "Employees",
@@ -146,6 +148,8 @@ const translations = {
 		projectCapacity: 'Project Capacity',
 		effectiveCapacity: 'Effective Capacity',
 		afterAssignment: 'After Assignment',
+		changeAssignmentTitle: 'Change Assignment',
+		changeSubmitBtn: 'Change',
 	}
 }
 
