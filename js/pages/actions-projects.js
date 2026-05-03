@@ -1,4 +1,7 @@
 import { closeAllModals } from './side-full.js'
+import { renderProjects } from './render-projects.js'
+import { updateState, getState } from '../state.js'
+import { isSure } from './actions.js'
 
 const addProjectWrapper = document.querySelector('.add_project')
 const sideLi = addProjectWrapper.querySelectorAll('.add_project__item')
@@ -29,5 +32,26 @@ export function addProject(state) {
 		customer: sideLi[1].children[1].value,
 		budget: sideLi[2].children[1].value,
 		capacity: sideLi[3].children[1].value,
+	}
+}
+
+export function deleteProject(project_id) {
+	if (isSure()) {
+		updateState(state => {
+			delete state.data[state.currentDate].projects[project_id]
+		})
+
+		const state = getState()
+		const assignments = state.data[state.currentDate].assignments
+
+		const assKeys = Object.keys(assignments)
+		const filteredKeys = assKeys.filter(a => assignments[a].projId === project_id)
+		filteredKeys.forEach(key => {
+			updateState(state => {
+				delete state.data[state.currentDate].assignments[key]
+			})
+		})
+
+		renderProjects()
 	}
 }

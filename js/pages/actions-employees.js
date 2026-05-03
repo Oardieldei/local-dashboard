@@ -1,4 +1,7 @@
 import { closeAllModals } from './side-full.js'
+import { renderEmployees } from './render-employees.js'
+import { updateState, getState } from '../state.js'
+import { isSure } from './actions.js'
 
 const addEmployeeWrapper = document.querySelector('.add_employee')
 const sideLi = addEmployeeWrapper.querySelectorAll('.add_employee__item')
@@ -37,5 +40,26 @@ export function addEmployee(state) {
 		email: sideLi[3].children[1].value,
 		position: sideLi[4].children[1].value,
 		salary: sideLi[5].children[1].value,
+	}
+}
+
+export function deleteEmployee(employee_id) {
+	if (isSure()) {
+		updateState(state => {
+			delete state.data[state.currentDate].employees[employee_id]
+		})
+
+		const state = getState()
+		const assignments = state.data[state.currentDate].assignments
+
+		const assKeys = Object.keys(assignments)
+		const filteredKeys = assKeys.filter(a => assignments[a].empId === employee_id)
+		filteredKeys.forEach(key => {
+			updateState(state => {
+				delete state.data[state.currentDate].assignments[key]
+			})
+		})
+
+		renderEmployees()
 	}
 }

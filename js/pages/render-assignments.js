@@ -2,10 +2,8 @@ import { getAssignmentsByCurrentDate } from './data-assignments.js'
 import { initLanguage } from "../translate.js"
 import { addCancelBtnListener, openSideBlock } from "./actions-assignments.js"
 import { getState } from '../state.js'
-import {
-	getEffectiveCapacity,
-	getEmployeeRevenue
-} from './calculation.js'
+import { getEffectiveCapacity, getEmployeeRevenue } from './calculation.js'
+import { deleteAssignment } from './actions-assignments.js'
 
 export function renderAassignments() {
 	const assignments = getAssignmentsByCurrentDate()
@@ -139,7 +137,7 @@ function createAssignmentRow(as, state) {
 		row.append(cell)
 	})
 
-	row.append(createActionsCell())
+	row.append(createActionsCell(as.id))
 
 	return row
 }
@@ -159,7 +157,7 @@ function setProfitColor(cell, value) {
 	}
 }
 
-function createActionsCell() {
+function createActionsCell(assId) {
 	const cell = document.createElement('div')
 	cell.classList.add('assignpage__cell', 'assignpage__cell--actions')
 
@@ -170,6 +168,10 @@ function createActionsCell() {
 	const deleteBtn = document.createElement('button')
 	deleteBtn.classList.add('assign-btn', 'assign-btn--delete')
 	deleteBtn.innerHTML = getDeleteIcon()
+
+	deleteBtn.addEventListener('click', () => {
+		deleteAssignment(assId)
+	})
 
 	cell.append(editBtn, deleteBtn)
 

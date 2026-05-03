@@ -86,7 +86,7 @@ export function getEmployeeProjectedIncome(empId) {
 }
 
 export function getEmployeeProfit(empId) {
-	return getEmployeeProjectedIncome(empId) - getEmployeeCost(empId)
+	return (getEmployeeProjectedIncome(empId) - getEmployeeCost(empId)).toFixed(2)
 }
 
 export function getProjectProfit(projId) {

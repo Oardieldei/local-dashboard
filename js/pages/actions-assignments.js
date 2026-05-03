@@ -1,5 +1,27 @@
 import { closeAllModals } from './side-full.js'
 import { addAssOptions } from './side-assignments.js'
+import { updateState } from '../state.js'
+import { renderAassignments } from './render-assignments.js'
+import { isSure } from './actions.js'
+
+export function deleteAssignment(id) {
+	if (isSure()) {
+		updateState(state => {
+			delete state.data[state.currentDate].assignments[id]
+		})
+
+		renderAassignments()
+	}
+}
+
+export function changeAssignment(id, newCapacity, newFit) {
+	updateState(state => {
+		state.data[state.currentDate].assignments[id].capacity = newCapacity
+		state.data[state.currentDate].assignments[id].fit = newFit
+	})
+
+	renderAassignments()
+}
 
 const addAssignmentWrapper = document.querySelector('.add_assignment')
 const sideLi = addAssignmentWrapper.querySelectorAll('.add_assignment__item')
