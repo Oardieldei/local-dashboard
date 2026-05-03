@@ -1,7 +1,7 @@
 import { getProjectsByCurrentDate } from './data-projects.js'
 import { initLanguage } from "../translate.js"
 import { addCancelBtnListener, openSideBlock } from "./actions-projects.js"
-import { getProjectCapacity, getProjectProgress } from './calculation.js'
+import { getProjectCapacity, getProjectProgress, getProjectProfit } from './calculation.js'
 
 export function renderProjects() {
 	const projects = getProjectsByCurrentDate()
@@ -156,7 +156,13 @@ function createProjectMiddle(proj) {
 
 	const newProjectInfoItemEstIncomeText = document.createElement('span')
 	newProjectInfoItemEstIncomeText.classList.add('projpage__project__info__item_text')
-	newProjectInfoItemEstIncomeText.textContent = '?'
+	const projProfitVal = getProjectProfit(proj.id)
+	newProjectInfoItemEstIncomeText.textContent = '$' + projProfitVal
+	if (projProfitVal < 0) {
+		newProjectInfoItemEstIncomeText.classList.add('red-text')
+	} else if (projProfitVal > 0) {
+		newProjectInfoItemEstIncomeText.classList.add('green-text')
+	}
 	newProjectInfoItemEstIncomeContent.append(newProjectInfoItemEstIncomeText)
 
 	const newProjectInfoItemCapacity = document.createElement('li')

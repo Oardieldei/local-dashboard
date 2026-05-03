@@ -58,6 +58,11 @@ const translations = {
 		assignments: 'Назначения',
 		estPayment: 'Расчетный платеж',
 		projEncome: 'Ожидаемый доход',
+		fit: 'Соответствие',
+		effective: 'Эффектинвность',
+		revenue: 'Доход',
+		cost: 'Расход',
+		profit: 'Итог',
 	},
 	en: {
 		employees: "Employees",
@@ -118,6 +123,11 @@ const translations = {
 		assignments: 'Assignments',
 		estPayment: 'Estimated Payment',
 		projEncome: 'Projected Income',
+		fit: 'Fit',
+		effective: 'Effective',
+		revenue: 'Revenue',
+		cost: 'Cost',
+		profit: 'Profit',
 	}
 }
 

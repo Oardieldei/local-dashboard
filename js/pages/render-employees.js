@@ -1,6 +1,7 @@
 import { getEmployeesByCurrentDate } from './data-employees.js'
 import { initLanguage } from "../translate.js"
 import { addCancelBtnListener, openSideBlock } from "./actions-employees.js"
+import { getEmployeeCapacityCount, getEmployeeCost, getEmployeeProfit } from './calculation.js'
 
 export function renderEmployees() {
 	const employees = getEmployeesByCurrentDate()
@@ -186,7 +187,7 @@ function createEmployeeMiddleBottom(emp) {
 
 	const newEmpSalaryValue = document.createElement('span')
 	newEmpSalaryValue.classList.add('emppage__employee__middlebottom__item_num')
-	newEmpSalaryValue.textContent = emp.salary
+	newEmpSalaryValue.textContent = '$' + emp.salary
 	newEmpSalaryWrapper.append(newEmpSalaryValue)
 
 	const newEmpAssignmentsWrapper = document.createElement('div')
@@ -200,7 +201,7 @@ function createEmployeeMiddleBottom(emp) {
 
 	const newEmpAssignmentsValue = document.createElement('span')
 	newEmpAssignmentsValue.classList.add('emppage__employee__middlebottom__item_num')
-	newEmpAssignmentsValue.textContent = '?'
+	newEmpAssignmentsValue.textContent = getEmployeeCapacityCount(emp.id)
 	newEmpAssignmentsWrapper.append(newEmpAssignmentsValue)
 
 	const newEmpEstPaymentWrapper = document.createElement('div')
@@ -214,7 +215,7 @@ function createEmployeeMiddleBottom(emp) {
 
 	const newEmpEstPaymentValue = document.createElement('span')
 	newEmpEstPaymentValue.classList.add('emppage__employee__middlebottom__item_num')
-	newEmpEstPaymentValue.textContent = '?'
+	newEmpEstPaymentValue.textContent = '$' + getEmployeeCost(emp.id)
 	newEmpEstPaymentWrapper.append(newEmpEstPaymentValue)
 
 	const newEmpProjEncomeWrapper = document.createElement('div')
@@ -228,7 +229,13 @@ function createEmployeeMiddleBottom(emp) {
 
 	const newEmpProjEncomeValue = document.createElement('span')
 	newEmpProjEncomeValue.classList.add('emppage__employee__middlebottom__item_num')
-	newEmpProjEncomeValue.textContent = '?'
+	const empProfitVal = getEmployeeProfit(emp.id)
+	newEmpProjEncomeValue.textContent = '$' + empProfitVal
+	if (empProfitVal < 0) {
+		newEmpProjEncomeValue.classList.add('red-text')
+	} else if (empProfitVal > 0) {
+		newEmpProjEncomeValue.classList.add('green-text')
+	}
 	newEmpProjEncomeWrapper.append(newEmpProjEncomeValue)
 
 	return newEmpMiddleBottom

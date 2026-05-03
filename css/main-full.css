@@ -146,3 +146,11 @@
 	cursor: pointer;
 	background-color: var(--red-hover);
 }
+
+.green-text {
+  color: #27ae60 !important;
+}
+
+.red-text {
+	color: #e74c3c !important;
+}
