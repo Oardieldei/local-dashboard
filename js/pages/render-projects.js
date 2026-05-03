@@ -329,5 +329,7 @@ function calculateProjectsSummary(state) {
 		}
 	})
 
+	totalProfit -= benchCost
+
 	return { totalProfit, benchCost }
 }
