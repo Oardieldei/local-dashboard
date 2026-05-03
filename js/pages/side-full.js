@@ -1,11 +1,14 @@
 import { controlProjSideBlock } from './side-projects.js'
 import { controlEmpSideBlock } from './side-employees.js'
+import { controlAssSideBlock } from './side-assignments.js'
 import { closeProjSideBlock } from './actions-projects.js'
 import { closeEmpSideBlock } from './actions-employees.js'
+import { closeAssSideBlock } from './actions-assignments.js'
 
 export function initSideFull() {
 	controlProjSideBlock()
-	controlEmpSideBlock()
+	controlEmpSideBlock()	
+	controlAssSideBlock()
 }
 
 const allModals = document.querySelectorAll('.side_block')
@@ -16,4 +19,5 @@ export function closeAllModals() {
 	})
 	closeProjSideBlock()
 	closeEmpSideBlock()
+	closeAssSideBlock()
 }

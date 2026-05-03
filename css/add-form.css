@@ -107,3 +107,16 @@
   font-weight: 500;
   color: var(--text);
 }
+
+.add_assignment__stat {
+	margin: 24px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.add_assignment__stat__item {
+	display: flex;
+	justify-content: space-between;
+}

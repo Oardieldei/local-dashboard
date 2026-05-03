@@ -1,8 +1,12 @@
 import { getProjectsByCurrentDate } from './data-projects.js'
 import { initLanguage } from "../translate.js"
-import { addCancelBtnListener, openSideBlock } from "./actions-projects.js"
+import { addCancelBtnListener, openSideBlock, deleteProject } from "./actions-projects.js"
+import { getProjectCapacity, getProjectProgress, getProjectProfit } from './calculation.js'
+import { getEffectiveCapacity, getEmployeeRevenue } from './calculation.js'
+import { getState } from '../state.js'
 
 export function renderProjects() {
+	const state = getState()
 	const projects = getProjectsByCurrentDate()
 
 	const container = document.querySelector('.pages__wrapper')
@@ -16,6 +20,8 @@ export function renderProjects() {
 	Object.values(projects).forEach(proj => {
 		newWrapper.append(createProjectItem(proj))
 	})
+
+	container.append(createProjectsSummary(state))
 
 	initLanguage()
 }
@@ -98,6 +104,9 @@ function createProjectHeader(proj) {
 	newProjectEditBtnDelete.classList.add('projpage__project__header_delete')
 	newProjectEditBtnDelete.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2" data-fg-cyth44="1.37:58.35:/src/app/components/Projects.tsx:161:19:6021:20:e:Trash2::::::c98" data-fgid-cyth44=":r7j:"><path d="M3 6h18"></path><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path><line x1="10" x2="10" y1="11" y2="17"></line><line x1="14" x2="14" y1="11" y2="17"></line></svg>'
 	newProjectEditBtns.append(newProjectEditBtnDelete)
+	newProjectEditBtns.addEventListener('click', () => {
+		deleteProject(proj.id)
+	})
 
 	return newProjectHeader
 }
@@ -155,7 +164,13 @@ function createProjectMiddle(proj) {
 
 	const newProjectInfoItemEstIncomeText = document.createElement('span')
 	newProjectInfoItemEstIncomeText.classList.add('projpage__project__info__item_text')
-	newProjectInfoItemEstIncomeText.textContent = '?'
+	const projProfitVal = getProjectProfit(proj.id)
+	newProjectInfoItemEstIncomeText.textContent = '$' + projProfitVal
+	if (projProfitVal < 0) {
+		newProjectInfoItemEstIncomeText.classList.add('red-text')
+	} else if (projProfitVal > 0) {
+		newProjectInfoItemEstIncomeText.classList.add('green-text')
+	}
 	newProjectInfoItemEstIncomeContent.append(newProjectInfoItemEstIncomeText)
 
 	const newProjectInfoItemCapacity = document.createElement('li')
@@ -179,7 +194,7 @@ function createProjectMiddle(proj) {
 
 	const newProjectInfoItemCapacityText = document.createElement('span')
 	newProjectInfoItemCapacityText.classList.add('projpage__project__info__item_text')
-	newProjectInfoItemCapacityText.textContent = '?/' + proj.capacity
+	newProjectInfoItemCapacityText.textContent = `${getProjectCapacity(proj.id)}/${proj.capacity}`
 	newProjectInfoItemCapacityContent.append(newProjectInfoItemCapacityText)
 
 	const newProjectInfoItemProgress = document.createElement('li')
@@ -203,7 +218,7 @@ function createProjectMiddle(proj) {
 
 	const newProjectInfoItemProgressText = document.createElement('span')
 	newProjectInfoItemProgressText.classList.add('projpage__project__info__item_text')
-	newProjectInfoItemProgressText.textContent = '?%'
+	newProjectInfoItemProgressText.textContent = `${getProjectProgress(proj.id)}%`
 	newProjectInfoItemProgressContent.append(newProjectInfoItemProgressText)
 
 	return newProjectInfo
@@ -224,7 +239,7 @@ function createProjectBottom(proj) {
 
 	const newProjectProgressTextsNumber = document.createElement('span')
 	newProjectProgressTextsNumber.classList.add('projpage__project__progress__texts_percent')
-	newProjectProgressTextsNumber.textContent = '?%'
+	newProjectProgressTextsNumber.textContent = `${getProjectProgress(proj.id)}%`
 	newProjectProgressTexts.append(newProjectProgressTextsNumber)
 
 	const newProjectProgressLine = document.createElement('div')
@@ -233,8 +248,88 @@ function createProjectBottom(proj) {
 
 	const newProjectProgressLineRed = document.createElement('div')
 	newProjectProgressLineRed.classList.add('projpage__project__progress__line_red')
-	newProjectProgressLineRed.style.width = '50%'
+	newProjectProgressLineRed.style.width = `${getProjectProgress(proj.id)}%`
 	newProjectProgressLine.append(newProjectProgressLineRed)
 
 	return newProjectProgress
+}
+
+function createProjectsSummary(state) {
+	const wrapper = document.createElement('div')
+	wrapper.classList.add('projpage__summary', 'grey-block')
+
+	const { totalProfit, benchCost } = calculateProjectsSummary(state)
+
+	const text = document.createElement('div')
+	text.classList.add('projpage__summary-text')
+
+	const totalIncomeLabel = document.createElement('span')
+	totalIncomeLabel.dataset.i18n = 'totalEstimatedIncome'
+
+	const benchLabel = document.createElement('span')
+	benchLabel.dataset.i18n = 'benchPayments'
+
+	const value = document.createElement('span')
+	value.textContent = ` $${totalProfit.toFixed(2)} `
+	if (totalProfit < 0) {
+		value.classList.add('red-text')
+	} else if (totalProfit > 0) {
+		value.classList.add('green-text')
+	}
+
+	const benchValue = document.createElement('span')
+	benchValue.textContent = `$${benchCost.toFixed(2)}`
+
+	text.append(
+		totalIncomeLabel,
+		document.createTextNode(':'),
+		value,
+		document.createTextNode(' ('),
+		benchLabel,
+		document.createTextNode(': '),
+		benchValue,
+		document.createTextNode(')')
+	)
+
+	wrapper.append(text)
+
+	return wrapper
+}
+
+function calculateProjectsSummary(state) {
+	const data = state.data[state.currentDate]
+
+	const assignments = data.assignments
+	const employees = data.employees
+
+	let totalProfit = 0
+
+	Object.values(assignments).forEach(as => {
+		const employee = employees[as.empId]
+
+		const capacity = Number(as.capacity)
+		const fit = Number(as.fit)
+
+		const effective = getEffectiveCapacity(capacity, fit)
+		const revenue = getEmployeeRevenue(as)
+		const cost = employee.salary * capacity
+
+		totalProfit += (revenue - cost)
+	})
+
+	const assignedEmployees = new Set(
+		Object.values(assignments).map(a => a.empId)
+	)
+
+	let benchCost = 0
+
+	Object.values(employees).forEach(emp => {
+		if (!assignedEmployees.has(emp.id)) {
+			benchCost += emp.salary * 0.5
+		}
+	})
+
+	totalProfit -= benchCost
+
+	return { totalProfit, benchCost }
 }

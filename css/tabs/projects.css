@@ -148,3 +148,15 @@
 	height: 100%;
 	background-color: var(--red);
 }
+
+.projpage__summary {
+	margin-top: 16px;
+	padding: 24px;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.projpage__summary-text {
+	font-size: 20px;
+	font-weight: 500;
+}
