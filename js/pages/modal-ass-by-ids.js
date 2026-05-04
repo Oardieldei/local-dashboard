@@ -1,9 +1,9 @@
 import { initLanguage } from "../translate.js"
-import { addCancelBtnListener, openSideBlock, changeAssignment } from "./actions-assignments.js"
 import { getState } from '../state.js'
 import { getEffectiveCapacity, getEmployeeRevenue } from './calculation.js'
-import { deleteAssignment, showChangeAssignmentModal } from './actions-assignments.js'
+import { deleteAssignment, showChangeAssignmentModal, openSideBlock, addCancelBtnListener } from './actions-assignments.js'
 import { closeAllModals } from './side-full.js'
+import { addAssOptionsFiltered } from './side-assignments.js'
 
 const container = document.querySelector('.assignment_byid')
 const assByIdWrapper = container.children[0]
@@ -19,6 +19,8 @@ export function renderAssignmentsById(key, value) {
 	const assignments = getAssignmentsById(key, value)
 	const state = getState()
 	assByIdWrapper.innerHTML = ''
+	container.dataset.usedType = key
+	container.dataset.usedId = value
 
 	if (Object.keys(assignments).length < 1) {
 
@@ -39,6 +41,8 @@ export function renderAssignmentsById(key, value) {
 		})
 
 	}
+	assByIdWrapper.append(createControlBtnsModal())
+
 	initLanguage()
 
 	showModalAssById()
@@ -207,4 +211,27 @@ function getDeleteIcon() {
 		<path d="M5 7L6 21H18L19 7" stroke-width="2"/>
 	</svg>
 	`
+}
+
+function createControlBtnsModal() {
+	const btnsWrapper = document.createElement('div')
+	btnsWrapper.classList.add('assignment_byid__btns')
+
+	const addBtn = document.createElement('div')
+	addBtn.classList.add('assignment_byid__btn_add')
+	addBtn.dataset.i18n = 'add'
+	btnsWrapper.append(addBtn)
+	addBtn.addEventListener('click', () => {
+		openSideBlock()
+		addAssOptionsFiltered(container.dataset.usedType, container.dataset.usedId)
+		addCancelBtnListener()
+	})
+
+	const cancelBtn = document.createElement('div')
+	cancelBtn.classList.add('assignment_byid__btn_cancel')
+	cancelBtn.dataset.i18n = 'cancel'
+	btnsWrapper.append(cancelBtn)	
+	cancelBtn.addEventListener('click', hideModalAssById)
+
+	return btnsWrapper
 }

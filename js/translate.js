@@ -75,6 +75,8 @@ const translations = {
 		changeAssignmentTitle: 'Изменить',
 		changeSubmitBtn: 'Изменить',
 		noAssignmentMessage: 'Нет назначений',
+		add: 'Добавить',
+		cancel: 'Отменить',
 	},
 	en: {
 		employees: "Employees",
@@ -142,7 +144,7 @@ const translations = {
 		profit: 'Profit',
 		assignmentsTotal: 'Total Assignments',
 		employeesAssigned: 'Unique Employees',
-		projectsAssigned: 'Unique Projects',		
+		projectsAssigned: 'Unique Projects',
 		totalEstimatedIncome: 'Total Estimated Income',
 		benchPayments: 'bench payments',
 		employeeCapacity: 'Employee Capacity',
@@ -152,6 +154,8 @@ const translations = {
 		changeAssignmentTitle: 'Change Assignment',
 		changeSubmitBtn: 'Change',
 		noAssignmentMessage: 'No Assignments',
+		add: 'Add',
+		cancel: 'Cancel',
 	}
 }
 
@@ -165,7 +169,7 @@ export function translatePage(lang) {
 	document.querySelector('.curr_date__month').textContent = select.options[select.selectedIndex].text
 }
 
-export function changeLanguage() {	
+export function changeLanguage() {
 	const langIndex = Object.keys(translations).indexOf(localStorage.getItem("lang") || 'en')
 	let nextLangIndex = langIndex === Object.keys(translations).length - 1 ? 0 : langIndex + 1
 

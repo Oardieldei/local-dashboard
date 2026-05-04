@@ -37,5 +37,41 @@
 }
 
 .assignment_byid__wrapper {
-	width: 80%;
+	min-width: 80%;
+}
+
+.assignment_byid__btns {
+	display: flex;
+	justify-content: flex-end;
+	gap: 16px;
+	align-items: center;
+}
+
+.assignment_byid__btn_add,
+.assignment_byid__btn_cancel {
+	margin-top: 16px;
+	padding: 8px 12px;
+	border-radius: var(--radius);
+	transition: background-color .3s;
+}
+
+.assignment_byid__btn_cancel {
+	border: 1px solid var(--red);
+	background-color: inherit;
+	color: var(--red);
+}
+
+.assignment_byid__btn_cancel:hover {
+	cursor: pointer;
+	background-color: rgba(229, 72, 77, 0.1);
+}
+
+.assignment_byid__btn_add {
+	background-color: var(--red);
+	color: var(--text-inverted);
+}
+
+.assignment_byid__btn_add:hover {
+	cursor: pointer;
+	background-color: var(--red-hover);
 }

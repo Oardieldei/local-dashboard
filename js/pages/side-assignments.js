@@ -34,6 +34,32 @@ export function addAssOptions() {
 	})
 }
 
+export function addAssOptionsFiltered(type, id) {
+	if (type === 'projId') {
+		const state = getState()
+
+		const selectItemProj = sideLi[1].children[1]
+		selectItemProj.innerHTML = ''
+		const option = document.createElement("option")
+		option.value = id
+		option.text = `${state.data[state.currentDate].projects[id].name}`
+
+		selectItemProj.append(option)
+
+	} else if (type === 'empId') {
+		const state = getState()
+
+		const selectItemEmp = sideLi[0].children[1]
+		selectItemEmp.innerHTML = ''
+		const option = document.createElement("option")
+		option.value = id
+		option.text = `${state.data[state.currentDate].employees[id].fname} ${state.data[state.currentDate].employees[id].lname}`
+
+		selectItemEmp.append(option)
+
+	}
+}
+
 function addAssRangeTextChanger() {
 	function addTextChanger(rangeContainer) {
 		rangeContainer.children[2].addEventListener('input', () => {
