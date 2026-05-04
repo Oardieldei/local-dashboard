@@ -45,9 +45,13 @@ function addAssRangeTextChanger() {
 	addTextChanger(sideLi[3])
 }
 
+function isAssSideGood() {
+	return !statWrapper.classList.contains('red-border') && sideLi[0].children[1].value !== '' && sideLi[1].children[1].value !== ''
+}
+
 export function controlAssSideBlock() {
 	submitBtn.addEventListener('click', () => {
-		if (!statWrapper.classList.contains('red-border')) {
+		if (isAssSideGood()) {
 			updateState(addAssignment)
 			closeAssSideBlock()
 			updatePage()

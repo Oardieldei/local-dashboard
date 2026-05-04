@@ -3,6 +3,7 @@ import { initLanguage } from "../translate.js"
 import { addCancelBtnListener, openSideBlock } from "./actions-employees.js"
 import { getEmployeeCapacityCount, getEmployeeCost, getEmployeeProfit } from './calculation.js'
 import { deleteEmployee } from './actions-employees.js'
+import { renderAssignmentsById } from './modal-ass-by-ids.js'
 
 export function renderEmployees() {
 	const employees = getEmployeesByCurrentDate()
@@ -250,6 +251,9 @@ function createEmployeeFooter(emp) {
 	newEmployeeBtnAssignments.classList.add('emppage__employee__footer_assignments')
 	newEmployeeBtnAssignments.dataset.i18n = 'assignments'
 	newEmployeeFooter.append(newEmployeeBtnAssignments)
+	newEmployeeBtnAssignments.addEventListener('click', () => {
+		renderAssignmentsById('empId', emp.id)
+	})
 
 	const newEmployeeBtnDelete = document.createElement('div')
 	newEmployeeBtnDelete.classList.add('emppage__employee__footer_delete')

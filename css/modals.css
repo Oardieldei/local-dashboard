@@ -14,7 +14,12 @@
 	display: flex;
 }
 
-.change_assignment__wrapper {
+.assignment_byid__shown {
+	display: flex;
+}
+
+.change_assignment__wrapper,
+.assignment_byid__wrapper {
 	padding: 24px;
 }
 
@@ -29,4 +34,8 @@
 	white-space: nowrap;
 	overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.assignment_byid__wrapper {
+	width: 80%;
 }

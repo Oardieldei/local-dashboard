@@ -74,6 +74,7 @@ const translations = {
 		afterAssignment: 'Изменения',
 		changeAssignmentTitle: 'Изменить',
 		changeSubmitBtn: 'Изменить',
+		noAssignmentMessage: 'Нет назначений',
 	},
 	en: {
 		employees: "Employees",
@@ -150,6 +151,7 @@ const translations = {
 		afterAssignment: 'After Assignment',
 		changeAssignmentTitle: 'Change Assignment',
 		changeSubmitBtn: 'Change',
+		noAssignmentMessage: 'No Assignments',
 	}
 }
 

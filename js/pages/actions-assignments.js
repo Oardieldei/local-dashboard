@@ -18,7 +18,7 @@ export function deleteAssignment(id) {
 			delete state.data[state.currentDate].assignments[id]
 		})
 
-		renderAassignments()
+		updatePage()
 	}
 }
 
@@ -89,13 +89,14 @@ function changeAssingmentModalValues(asId) {
 }
 
 export function showChangeAssignmentModal(asId) {
+	closeAllModals()
 	changeAssingmentModalValues(asId)
 
 	changeAssingmentModalWrapper.classList.add('change_assignment__shown')
 	document.body.style.overflow = 'hidden'
 }
 
-function hideChangeAssignmentModal() {
+export function hideChangeAssignmentModal() {
 	changeAssingmentModalWrapper.classList.remove('change_assignment__shown')
 	document.body.style.overflow = ''
 }
@@ -164,4 +165,12 @@ export function controlChangeAssModal() {
 
 export function initChangeAssModalFull() {
 	controlChangeAssModal()
+	changeModalBgClosing()
+}
+
+function changeModalBgClosing() {
+	const wrapper = document.querySelector('.change_assignment')
+	wrapper.addEventListener('click', (e) => {
+		if (e.target === wrapper) hideChangeAssignmentModal()
+	})
 }
