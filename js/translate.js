@@ -59,7 +59,7 @@ const translations = {
 		estPayment: 'Расчетный платеж',
 		projEncome: 'Ожидаемый доход',
 		fit: 'Соответствие',
-		effective: 'Эффектинвность',
+		effective: 'Эффективность',
 		revenue: 'Доход',
 		cost: 'Расход',
 		profit: 'Итог',
@@ -68,10 +68,15 @@ const translations = {
 		projectsAssigned: 'Проектов в работе',
 		totalEstimatedIncome: 'Итоговый баланс',
 		benchPayments: 'платежи тунеядцам',
-		employeeCapacity: 'Время работы сотрудника',
-		projectCapacity: 'Ресурсный объем проекта',
-		effectiveCapacity: 'Эффективность сотрудника',
+		employeeCapacity: 'Нагрузка',
+		projectCapacity: 'Ресурсный объем',
+		effectiveCapacity: 'Эффективность',
 		afterAssignment: 'Изменения',
+		changeAssignmentTitle: 'Изменить',
+		changeSubmitBtn: 'Изменить',
+		noAssignmentMessage: 'Нет назначений',
+		add: 'Добавить',
+		cancel: 'Отменить',
 	},
 	en: {
 		employees: "Employees",
@@ -139,13 +144,18 @@ const translations = {
 		profit: 'Profit',
 		assignmentsTotal: 'Total Assignments',
 		employeesAssigned: 'Unique Employees',
-		projectsAssigned: 'Unique Projects',		
+		projectsAssigned: 'Unique Projects',
 		totalEstimatedIncome: 'Total Estimated Income',
 		benchPayments: 'bench payments',
 		employeeCapacity: 'Employee Capacity',
 		projectCapacity: 'Project Capacity',
 		effectiveCapacity: 'Effective Capacity',
 		afterAssignment: 'After Assignment',
+		changeAssignmentTitle: 'Change Assignment',
+		changeSubmitBtn: 'Change',
+		noAssignmentMessage: 'No Assignments',
+		add: 'Add',
+		cancel: 'Cancel',
 	}
 }
 
@@ -159,7 +169,7 @@ export function translatePage(lang) {
 	document.querySelector('.curr_date__month').textContent = select.options[select.selectedIndex].text
 }
 
-export function changeLanguage() {	
+export function changeLanguage() {
 	const langIndex = Object.keys(translations).indexOf(localStorage.getItem("lang") || 'en')
 	let nextLangIndex = langIndex === Object.keys(translations).length - 1 ? 0 : langIndex + 1
 

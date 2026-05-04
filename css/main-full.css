@@ -8,7 +8,7 @@
 	border-radius: var(--radius);
 	border: 1px solid var(--border);
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-	transition: box-shadow .3s;
+	transition: box-shadow .3s, background-color .3s;
 }
 
 .main__header {
@@ -153,4 +153,24 @@
 
 .red-text {
 	color: #e74c3c !important;
+}
+
+.orange-border {
+	border: 1px solid #e74d3c52;
+	box-shadow: 0 1px 3px #e74d3c52;
+	background-color: #e74d3c0c;
+}
+
+.red-border {
+	border: 1px solid var(--red);
+	box-shadow: 0 1px 3px var(--red);
+	background-color: #f501010c;
+}
+
+.orange-text-side {
+	color: #bb5044;
+}
+
+.red-text-side {
+	color: var(--red);
 }

@@ -120,7 +120,7 @@
 
 .emppage__employee__footer_delete:hover {	
 	cursor: pointer;
-	background-color: #f3f2f2;
+	background-color: rgba(229, 72, 77, 0.1);
 }
 
 .emppage__employee__footer_delete > svg {
